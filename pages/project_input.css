@@ -20,7 +20,8 @@ body {
 }
 
 /* Background Decorations */
-body::before, body::after {
+body::before,
+body::after {
     content: '';
     position: absolute;
     width: 300px;
@@ -61,6 +62,7 @@ h2 {
     margin-bottom: 10px;
     background: linear-gradient(to right, #9d4edd, #e0aaff);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -85,7 +87,8 @@ form {
 .input-group textarea {
     width: 100%;
     padding: 15px;
-    background: rgba(255, 255, 255, 0.05); /* Slightly visible input bg */
+    background: rgba(255, 255, 255, 0.05);
+    /* Slightly visible input bg */
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 10px;
     color: #fff;
@@ -117,15 +120,16 @@ form {
     background: rgba(255, 255, 255, 0.1);
 }
 
-.input-group input:focus ~ label,
-.input-group input:valid ~ label,
-.input-group textarea:focus ~ label,
-.input-group textarea:valid ~ label {
+.input-group input:focus~label,
+.input-group input:valid~label,
+.input-group textarea:focus~label,
+.input-group textarea:valid~label {
     top: -10px;
     left: 10px;
     font-size: 0.8rem;
     color: #e0aaff;
-    background: #1e0533; /* Match body bg to hide line */
+    background: #1e0533;
+    /* Match body bg to hide line */
     padding: 0 5px;
 }
 
@@ -160,6 +164,7 @@ button:active {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
