@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Your Journey - Jumeneng</title>
+    <link rel="stylesheet" href="project_input.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2>Welcome Aboard!</h2>
+        <p>Tell us a bit about your new project to get started.</p>
+
+        <form onsubmit="submitProject(event)">
+            <div class="input-group">
+                <input type="text" id="projectName" required>
+                <label for="projectName">Project Name</label>
+            </div>
+
+            <div class="input-group">
+                <textarea id="projectDesc" required></textarea>
+                <label for="projectDesc">Description</label>
+            </div>
+
+            <div class="input-group">
+                <input type="text" id="dueDate" placeholder=" " onfocus="(this.type='date')" onblur="(this.type='text')"
+                    required>
+                <label for="dueDate">Due Date</label>
+            </div>
+
+            <button type="submit">Continue to Dashboard</button>
+        </form>
+    </div>
+
+    <script src="project_input.js"></script>
+</body>
+
+</html>

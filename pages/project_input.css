@@ -1,0 +1,167 @@
+/* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #1e0533, #11011e);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+    position: relative;
+}
+
+/* Background Decorations */
+body::before, body::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    filter: blur(100px);
+    z-index: -1;
+}
+
+body::before {
+    background: #7b2cbf;
+    top: -50px;
+    left: -50px;
+}
+
+body::after {
+    background: #3c096c;
+    bottom: -50px;
+    right: -50px;
+}
+
+/* Container */
+.container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    width: 400px;
+    max-width: 90%;
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, #9d4edd, #e0aaff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+p {
+    font-size: 0.9em;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05); /* Slightly visible input bg */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    outline: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group textarea {
+    resize: none;
+    height: 80px;
+}
+
+.input-group label {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    pointer-events: none;
+    color: #aaa;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.input-group input:focus,
+.input-group input:valid,
+.input-group textarea:focus,
+.input-group textarea:valid {
+    border-color: #9d4edd;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label,
+.input-group textarea:focus ~ label,
+.input-group textarea:valid ~ label {
+    top: -10px;
+    left: 10px;
+    font-size: 0.8rem;
+    color: #e0aaff;
+    background: #1e0533; /* Match body bg to hide line */
+    padding: 0 5px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #7b2cbf, #5a189a);
+    color: #fff;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
+    background: linear-gradient(135deg, #9d4edd, #7b2cbf);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
