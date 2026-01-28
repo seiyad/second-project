@@ -21,43 +21,45 @@
       <div class="profile"><img src="../assest/download.jpg" alt="profile"></div>
     </a>
   </nav>
-  <h1>All Category</h1>
-  <div class="expense-header">
-    <a href="addcatagorie.html"><button class="add-btn">+ Add Category</button></a>
+  <div class="container">
+    <h1>All Category</h1>
+    <div class="expense-header">
+      <a href="addcatagorie.html"><button class="add-btn">+ Add Category</button></a>
+    </div>
+    <table class="catagorie-table" id="catTable">
+      <tr>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+      <tr>
+        <td>food</td>
+        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+      </tr>
+      <tr>
+        <td>Transport</td>
+        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+      </tr>
+      <tr>
+        <td>Entertaiment</td>
+        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+      </tr>
+      <tr>
+        <td>Fanily tour</td>
+        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+      </tr>
+      <tr>
+        <td>Medical</td>
+        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+      </tr>
+      <tr>
+        <td>Shopping</td>
+        <td> <button class="this" onclick="deleteRow(this)">Delete></button><button id="edit">Edit</button></td>
+      <tr>
+        <td>Grosary</td>
+        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+      </tr>
+    </table>
   </div>
-  <table class="catagorie-table" id="catTable">
-    <tr>
-      <th>Category</th>
-      <th>Actions</th>
-    </tr>
-    <tr>
-      <td>food</td>
-      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-    </tr>
-    <tr>
-      <td>Transport</td>
-      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-    </tr>
-    <tr>
-      <td>Entertaiment</td>
-      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-    </tr>
-    <tr>
-      <td>Fanily tour</td>
-      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-    </tr>
-    <tr>
-      <td>Medical</td>
-      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-    </tr>
-    <tr>
-      <td>Shopping</td>
-      <td> <button class="this" onclick="deleteRow(this)">Delete></button><button id="edit">Edit</button></td>
-    <tr>
-      <td>Grosary</td>
-      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-    </tr>
-  </table>
 
   <footer>&copy; Expense Tracker</footer>
   <script src="../pages/catagorie.js"></script>
