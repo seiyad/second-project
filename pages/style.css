@@ -61,6 +61,37 @@ body {
     z-index: 0;
     pointer-events: none;
 }
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 100px;
+    position: relative;
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--text-main);
+    letter-spacing: -0.5px;
+}
+
+/* Logo icon accent */
+.logo::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 3px;
+    box-shadow: 0 0 15px var(--primary);
+}
+
 .sign-in {
     color: var(--text-muted);
     text-decoration: none;
