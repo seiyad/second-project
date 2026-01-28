@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 :root {
     /* Premium Dark Palette */
     --bg-main: #09090b;   /* Very dark, almost black */
@@ -90,6 +92,36 @@ nav {
     background: var(--primary);
     border-radius: 3px;
     box-shadow: 0 0 15px var(--primary);
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    background: var(--glass);
+    padding: 10px 30px;
+    border-radius: 100px;
+    border: 1px solid var(--border-soft);
+    backdrop-filter: blur(10px);
+}
+
+.nav-menu li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-menu li a:hover {
+    color: var(--text-main);
+    text-shadow: 0 0 10px rgba(255,255,255,0.3);
+}
+
+.nav-auth {
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 .sign-in {
