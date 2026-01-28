@@ -4,33 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Your Journey - Jumeneng</title>
+    <title>Set Budget - Expense Tracker</title>
     <link rel="stylesheet" href="project_input.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
 <body>
     <div class="container">
-        <h2>Welcome Aboard!</h2>
-        <p>Tell us a bit about your new project to get started.</p>
+        <h2>Set Your Goal</h2>
+        <p>Enter your monthly budget to get started.</p>
 
-        <form onsubmit="submitProject(event)">
+        <form onsubmit="submitBudget(event)">
             <div class="input-group">
-                <input type="text" id="projectName" required>
-                <label for="projectName">Project Name</label>
+                <i class="fa-solid fa-indian-rupee-sign icon"></i>
+                <input type="number" id="monthlyAmount" placeholder="Enter Monthly Amount" required>
             </div>
 
-            <div class="input-group">
-                <textarea id="projectDesc" required></textarea>
-                <label for="projectDesc">Description</label>
-            </div>
-
-            <div class="input-group">
-                <input type="text" id="dueDate" placeholder=" " onfocus="(this.type='date')" onblur="(this.type='text')"
-                    required>
-                <label for="dueDate">Due Date</label>
-            </div>
-
-            <button type="submit">Continue to Dashboard</button>
+            <button type="submit">Start Tracking <i class="fa-solid fa-arrow-right"></i></button>
         </form>
     </div>
 

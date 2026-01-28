@@ -1,78 +1,56 @@
-/* Global Styles */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --bg-main: #09090b;
+    --bg-card: #121216;
+    --bg-soft: #1c1c24;
+    --text-main: #ffffff;
+    --text-muted: #a1a1aa;
+    --primary: #6366f1;
+    --border-soft: #27272a;
+    --success: #10b981;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Outfit', sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #1e0533, #11011e);
+    background-color: var(--bg-main);
+    color: var(--text-main);
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-    color: #fff;
-    position: relative;
 }
 
-/* Background Decorations */
-body::before,
-body::after {
-    content: '';
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: -1;
-}
-
-body::before {
-    background: #7b2cbf;
-    top: -50px;
-    left: -50px;
-}
-
-body::after {
-    background: #3c096c;
-    bottom: -50px;
-    right: -50px;
-}
-
-/* Container */
 .container {
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--bg-card);
     padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+    border-radius: 16px;
+    border: 1px solid var(--border-soft);
     width: 400px;
     max-width: 90%;
     text-align: center;
-    animation: fadeIn 0.8s ease-in-out;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
-    font-size: 2em;
+    font-size: 24px;
+    font-weight: 700;
     margin-bottom: 10px;
-    background: linear-gradient(to right, #9d4edd, #e0aaff);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text-main);
 }
 
 p {
-    font-size: 0.9em;
-    color: #ccc;
+    font-size: 14px;
+    color: var(--text-muted);
     margin-bottom: 30px;
 }
 
-/* Form Styles */
 form {
     display: flex;
     flex-direction: column;
@@ -81,92 +59,71 @@ form {
 
 .input-group {
     position: relative;
+    display: flex;
+    align-items: center;
 }
 
-.input-group input,
-.input-group textarea {
-    width: 100%;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    /* Slightly visible input bg */
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    color: #fff;
-    outline: none;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-}
-
-.input-group textarea {
-    resize: none;
-    height: 80px;
-}
-
-.input-group label {
+.input-group .icon {
     position: absolute;
     left: 15px;
-    top: 15px;
-    pointer-events: none;
-    color: #aaa;
-    font-size: 1rem;
+    color: var(--text-muted);
+    transition: color 0.3s ease;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 15px 15px 45px;
+    background-color: var(--bg-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: 12px;
+    color: var(--text-main);
+    font-size: 16px;
+    outline: none;
     transition: all 0.3s ease;
 }
 
-.input-group input:focus,
-.input-group input:valid,
-.input-group textarea:focus,
-.input-group textarea:valid {
-    border-color: #9d4edd;
-    background: rgba(255, 255, 255, 0.1);
+.input-group input::placeholder {
+    color: var(--text-muted);
 }
 
-.input-group input:focus~label,
-.input-group input:valid~label,
-.input-group textarea:focus~label,
-.input-group textarea:valid~label {
-    top: -10px;
-    left: 10px;
-    font-size: 0.8rem;
-    color: #e0aaff;
-    background: #1e0533;
-    /* Match body bg to hide line */
-    padding: 0 5px;
+.input-group input:focus {
+    border-color: var(--primary);
+    background-color: #202028;
 }
 
-/* Button */
+.input-group input:focus+.icon {
+    color: var(--primary);
+}
+
+/* Chrome, Safari, Edge, Opera - hide number spinner */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 button {
     width: 100%;
     padding: 15px;
     border: none;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #7b2cbf, #5a189a);
-    color: #fff;
-    font-size: 1.1em;
+    border-radius: 12px;
+    background-color: var(--primary);
+    color: white;
+    font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-top: 10px;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 button:hover {
+    filter: brightness(1.1);
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(123, 44, 191, 0.4);
-    background: linear-gradient(135deg, #9d4edd, #7b2cbf);
 }
 
 button:active {
     transform: translateY(0);
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }

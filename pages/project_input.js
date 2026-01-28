@@ -1,27 +1,23 @@
-function submitProject(event) {
+function submitBudget(event) {
     event.preventDefault();
 
-    const projectName = document.getElementById('projectName').value;
-    const projectDesc = document.getElementById('projectDesc').value;
-    const dueDate = document.getElementById('dueDate').value;
+    const monthlyAmount = document.getElementById('monthlyAmount').value;
 
-    if (projectName && dueDate) {
-        // Here you would typically save the data to a database or local storage
-        console.log("Project Details Captured:", {
-            name: projectName,
-            description: projectDesc,
-            date: dueDate
-        });
+    if (monthlyAmount) {
+        // In a real app, save to localStorage or backend
+        console.log("Monthly Budget Set:", monthlyAmount);
+        localStorage.setItem('monthlyBudget', monthlyAmount);
 
-        // Simulating a delay for effect, then redirecting
+        // Feedback
         const btn = document.querySelector('button');
-        btn.innerHTML = "Processing...";
-        btn.style.opacity = "0.8";
+        const originalText = btn.innerHTML;
+        btn.innerHTML = 'Setting Budget...';
+        btn.style.opacity = '0.8';
 
         setTimeout(() => {
-            window.location.href = "dashborard.html"; // Redirect to main dashboard
-        }, 1000);
+            window.location.href = "dashborard.html";
+        }, 800);
     } else {
-        alert("Please fill in the required fields.");
+        alert("Please enter a valid amount.");
     }
 }
