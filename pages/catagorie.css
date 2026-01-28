@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --bg-main: #09090b;
+  --bg-card: #121216;
+  --bg-soft: #1c1c24;
+  --text-main: #ffffff;
+  --text-muted: #a1a1aa;
+  --primary: #6366f1;
+  --border-soft: #27272a;
+  --success: #10b981;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card);
+  padding: 20px 40px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-links a:hover {
+  background: var(--bg-soft);
+  color: var(--text-main);
+}
+
+.profile img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid var(--border-soft);
+  object-fit: cover;
+}
+
+/* CONTENT */
+.container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* BUTTONS */
+.add-btn {
+  background-color: var(--success);
+  border: none;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 20px;
+  transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+}
+
+/* TABLE */
+.catagorie-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: var(--bg-card);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-soft);
+}
+
+.catagorie-table th,
+.catagorie-table td {
+  padding: 20px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.catagorie-table th {
+  background-color: var(--bg-soft);
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.catagorie-table tr:hover td {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.catagorie-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* ACTION BUTTONS */
+button {
+  cursor: pointer;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border-soft);
+  background: transparent;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+#edit:hover {
+  background: var(--bg-soft);
+  color: #6366f1;
+  border-color: #6366f1;
+}
+
+.this:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: var(--bg-card);
+  color: var(--text-muted);
+  text-align: center;
+  padding: 15px 0;
+  font-size: 14px;
+  border-top: 1px solid var(--border-soft);
+}

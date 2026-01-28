@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../pages/catagorie.css">
+  <link rel="icon" type="image/x-icon" href="../assest/f9133a4dc4f047f835cef3115b270ac3.jpg">
+  <title>Xpence Category</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="logo"><img src="../assest/glogo.png" height="40px" width="150px" alt=""></div>
+    <div class="nav-links">
+      <a href="dashborard.html">Dashboard</a>
+      <a href="expence.html">Expenses</a>
+      <a href="catagorie.html">Category</a>
+    </div>
+    <a href="profile.html">
+      <div class="profile"><img src="../assest/download.jpg" alt="profile"></div>
+    </a>
+  </nav>
+  <h1>All Category</h1>
+  <div class="expense-header">
+    <a href="addcatagorie.html"><button class="add-btn">+ Add Category</button></a>
+  </div>
+  <table class="catagorie-table" id="catTable">
+    <tr>
+      <th>Category</th>
+      <th>Actions</th>
+    </tr>
+    <tr>
+      <td>food</td>
+      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+    </tr>
+    <tr>
+      <td>Transport</td>
+      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+    </tr>
+    <tr>
+      <td>Entertaiment</td>
+      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+    </tr>
+    <tr>
+      <td>Fanily tour</td>
+      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+    </tr>
+    <tr>
+      <td>Medical</td>
+      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+    </tr>
+    <tr>
+      <td>Shopping</td>
+      <td> <button class="this" onclick="deleteRow(this)">Delete></button><button id="edit">Edit</button></td>
+    <tr>
+      <td>Grosary</td>
+      <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+    </tr>
+  </table>
+
+  <footer>@Expense trakker@</footer>
+  <script src="../pages/catagorie.js"></script>
+
+</body>
+
+</html>
