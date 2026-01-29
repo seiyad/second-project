@@ -214,5 +214,17 @@ a {
 
 .a{
     background-color: red;
-    box-shadow: 8px 5px 10px white;
+    box-shadow: 1px 2px 1px rgb(220, 151, 151);
+    height: 40px;
+    width: 100px;
+    border-radius: 8px;
+    margin-left: 200px;
+}
+.b{
+    background-color: rgb(50, 231, 131);
+    box-shadow: 1px 2px 1px rgb(183, 226, 180);
+    height: 40px;
+    width: 100px;
+    border-radius: 8px;
+    margin-left: 500px;
 }
