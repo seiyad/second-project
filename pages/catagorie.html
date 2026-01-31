@@ -26,43 +26,49 @@
     <div class="expense-header">
       <a href="addcatagorie.html"><button class="add-btn">+ Add Category</button></a>
     </div>
-    <table class="catagorie-table" id="catTable">
-      <tr>
-        <th>Category</th>
-        <th>Actions</th>
-      </tr>
-      <tr>
-        <td>food</td>
-        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-      </tr>
-      <tr>
-        <td>Transport</td>
-        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-      </tr>
-      <tr>
-        <td>Entertaiment</td>
-        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-      </tr>
-      <tr>
-        <td>Fanily tour</td>
-        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-      </tr>
-      <tr>
-        <td>Medical</td>
-        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-      </tr>
-      <tr>
-        <td>Shopping</td>
-        <td> <button class="this" onclick="deleteRow(this)">Delete></button><button id="edit">Edit</button></td>
-      <tr>
-        <td>Grosary</td>
-        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-      </tr>
-    </table>
+    <form action="#" id="frm">
+      <input type="hidden" id="id">
+      <table class="catagorie-table" id="catTable">
+        <tbody id="tblBody">
+          <tr>
+            <th>Category</th>
+            <th>Actions</th>
+          </tr>
+          <tr>
+            <td>food</td>
+            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+          </tr>
+          <tr>
+            <td>Transport</td>
+            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+          </tr>
+          <tr>
+            <td>Entertaiment</td>
+            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+          </tr>
+          <tr>
+            <td>Fanily tour</td>
+            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+          </tr>
+          <tr>
+            <td>Medical</td>
+            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+          </tr>
+          <tr>
+            <td>Shopping</td>
+            <td> <button class="this">Delete></button><button id="edit">Edit</button></td>
+          <tr>
+            <td>Grosary</td>
+            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
   </div>
 
   <footer>&copy; Expense Tracker</footer>
-  <script src="../pages/catagorie.js"></script>
+  <script src="../pages/catagorie.js" type="module"></script>
+  <script src="../pages/addcatagory.js" type="module"></script>
 
 </body>
 
