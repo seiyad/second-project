@@ -8,11 +8,15 @@ body {
     color:white;
 }
 .box {
+    display: grid;
+    align-items: center;
+    align-items: center;
     background:  #121216;
     padding: 40px;
     width: 350px;
     border-radius: 20px;
     text-align: center;
+    margin-right: 120px;
 }
 
 h2 {
@@ -48,7 +52,10 @@ button {
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+#register{
+    margin-top: 20px;
+
 }
 
 button:hover {
