@@ -63,7 +63,7 @@ if (signOutBtn) {
 
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      window.location.href = "dashboard.html";
+      window.location.href = "index.html";
     }
   });
 }
