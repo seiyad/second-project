@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../pages/catagorie.css">
+  <link rel="stylesheet" href="./pages/catagorie.css">
   <link rel="icon" type="image/x-icon" href="../assest/f9133a4dc4f047f835cef3115b270ac3.jpg">
   <title>Xpence Category</title>
 </head>
@@ -26,48 +26,56 @@
     <div class="expense-header">
       <a href="addcatagorie.html"><button class="add-btn">+ Add Category</button></a>
     </div>
-    <!-- <div class="box">
+    <div class="box">
       <h2>Add Category</h2>
       <input type="hidden" id="id">
       <label for="catagorie">Catagorie</label>
       <input type="hidden" id="id">
       <input type="text" id="catagorie" placeholder="Enter your catagorie:" />
       <button type="submit">Submit</button>
-    </div> -->
-    <!-- <form action="#" id="frm">
-      <input type="hidden" id="id"> -->
+    </div>
+    <form action="#" id="frm">
+      <input type="hidden" id="id"/>
+      <label for="caatgorie">Catagorie</label>
+      <input type="text" id="catagorie" placeholder="catagorie"/>
+      <button type="submit"><ion-icon name="save-outline"></ion-icon></button>
       <table class="catagorie-table" id="catTable">
         <tbody id="tblBody">
-          <tr>
+          <thead>
+            <th>S.No</th>
             <th>Category</th>
-            <th>Actions</th>
-          </tr>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
           <tr>
+            <td>1</td>
             <td>food</td>
-            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+            <td> <button class="this"><ion-icon name="trash-outline"></ion-icon></button></td>
+            <td><button id="edit"><ion-icon name="create-outline"></ion-icon></button></td>
           </tr>
           <tr>
-            <td>Transport</td>
-            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+            <td>2</td>
+            <td>Grosaries</td>
+            <td> <button class="this"><ion-icon name="trash-outline"></ion-icon></button></td>
+            <td><button id="edit"><ion-icon name="create-outline"></ion-icon></button></td>
           </tr>
           <tr>
-            <td>Entertaiment</td>
-            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+            <td>3</td>
+            <td>Tour</td>
+            <td> <button class="this"><ion-icon name="trash-outline"></ion-icon></button></td>
+            <td><button id="edit"><ion-icon name="create-outline"></ion-icon></button></td>
           </tr>
           <tr>
-            <td>Fanily tour</td>
-            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+            <td>4</td>
+            <td>Vecation</td>
+            <td> <button class="this"><ion-icon name="trash-outline"></ion-icon></button></td>
+            <td><button id="edit"><ion-icon name="create-outline"></ion-icon></button></td>
           </tr>
           <tr>
+            <td>5</td>
             <td>Medical</td>
-            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
-          </tr>
-          <tr>
-            <td>Shopping</td>
-            <td> <button class="this">Delete></button><button id="edit">Edit</button></td>
-          <tr>
-            <td>Grosary</td>
-            <td> <button class="this">Delete</button><button id="edit">Edit</button></td>
+            <td> <button class="this"><ion-icon name="trash-outline"></ion-icon></button></td>
+            <td><button id="edit"><ion-icon name="create-outline"></ion-icon></button></td>
           </tr>
         </tbody>
       </table>
@@ -75,8 +83,8 @@
   </div>
 
   <footer>&copy; Expense Tracker</footer>
-  <script src="../pages/addcatagory.js" type="module"></script>
-
 </body>
-
+<script src="../pages/addcatagory.js" type="module"></script>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </html>

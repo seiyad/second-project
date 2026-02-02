@@ -33,25 +33,6 @@ h2 {
     text-align: center;
 }
 
-input {
-    width: 100%;
-    padding: 12px 16px;
-    margin-bottom: 20px;
-    background: #1c1c24;
-    border: 1px solid #27272a;
-    border-radius: 12px;
-    color: #ffffff;
-    font-family: inherit;
-    outline: none;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-}
-
-input:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-}
-
 button {
     width: 100%;
     padding: 14px;
@@ -236,4 +217,39 @@ footer {
   padding: 15px 0;
   font-size: 14px;
   border-top: 1px solid var(--border-soft);
+}
+form{
+  width: 300px;
+}
+form.form-group{
+  display: flex;
+  align-items: center;
+}
+form .form-group label{
+font-weight: 500;
+text-transform: uppercase;
+min-width: 100px;
+}
+form.form-group input{
+  font-size: 16px;
+  padding:5px 10px;
+  border: none;
+  outline: none;
+  background-color: #f1f1f1;
+  border-radius: 2px;
+  margin:10px 5px ;
+}
+form button{
+  padding: 5px 28px;
+  display: flex;
+  align-items: center;
+  gap:5px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  border: none;
+  background-color:green;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 15px 0;
 }
