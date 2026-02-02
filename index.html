@@ -1,18 +1,39 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Login</title>
-    <link rel="icon" type="image/x-icon" href="../assest/f9133a4dc4f047f835cef3115b270ac3.jpg">
-    <link rel="stylesheet" href="./pages/style.css">
+    <link rel="stylesheet" href="../class/pages/style.css">
 </head>
-
 <body>
-    <div class="box1"> <img src="./assest/landingpage image.jpg" height="731px" width="70%"> </div>
-    <h1></h1>
-    <div class="box"> <input type="text" id="user" placeholder="Enter Username"> <input type="password" id="pass"
-            placeholder="Enter Password"> <input type="text" id="mail" placeholder="Enter gmail"> <a
-            href="pages/dashborard.html"><button onclick="login()">Login</button></a> </div>
-</body>
 
+    <div class="main-container">
+        <div class="image-section">
+            <img src="./assest/landingpage image.jpg" alt="Login Image">
+        </div>
+
+        <div class="login-section">
+            <h2>Welcome Back</h2>
+            <div class="input-group">
+                <input type="text" id="user" placeholder="Username">
+                <input type="email" id="mail" placeholder="Gmail Address">
+                <input type="password" id="pass" placeholder="Password">
+                
+                <button onclick="login()">Login</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            let user = document.getElementById('user').value;
+            if(user === "") {
+                alert("Please enter username!");
+            } else {
+                window.location.href = "pages/dashborard.html";
+            }
+        }
+    </script>
+</body>
 </html>
