@@ -253,3 +253,13 @@ form button{
   letter-spacing: 1px;
   margin: 15px 0;
 }
+.btn-delete{
+  background-color: red;
+}
+table td button{
+  cursor: pointer;
+}
+.btn-edit ion-icon,
+.btn-delete ion-icon{
+  pointer-events: none;
+}
