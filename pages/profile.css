@@ -1,111 +1,151 @@
+/* Font and Reset */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  /* Dark Charcoal instead of pure black for a softer feel */
-  background-color: #1a1a2e; 
-  color: #e0e0e0;
+  background-color: #0f172a; /* Deep Dark Blue/Black */
+  color: #f8fafc;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
+/* Header with Gradient */
 .header {
-  height: 260px;
-  /* Professional Blue Gradient */
-  background: linear-gradient(135deg, #16213e, #0f3460);
+  height: 220px;
+  background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  border-bottom: 2px solid #4e54c8;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .header h1 {
-  font-size: 70px;
-  color: rgba(255, 255, 255, 0.05); /* Lower opacity for background text effect */
-  letter-spacing: 15px;
+  font-size: 80px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.03); /* Ghost text effect */
+  letter-spacing: 20px;
+  position: absolute;
 }
 
+/* Profile Image with Border Glow */
 .profile-img {
   position: absolute;
   bottom: -60px;
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
   border-radius: 50%;
-  border: 4px solid #1a1a2e; /* Matches body background */
-  background: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  border: 5px solid #0f172a;
+  background: #1e293b;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(78, 84, 200, 0.4);
 }
 
-.container {
-  max-width: 900px;
-  margin: 100px auto 40px;
-  padding: 20px;
+.profile-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.name h2 {
-  font-size: 32px;
-  color: #fff;
+.profile-img:hover img {
+  transform: scale(1.1);
 }
 
-.name p {
-  color: #a2a2a2; /* Light grey instead of dark grey */
-  margin-top: 5px;
-}
-
-/* Glassmorphism Effect for Section */
-.section {
-  background: rgba(255, 255, 255, 0.05); /* Transparent white */
-  backdrop-filter: blur(10px);
-  margin-top: 30px;
-  padding: 30px;
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.section h3 {
-  margin-bottom: 15px;
-  color: #4e54c8; /* Branding color */
-}
-
-.section p {
-  color: #cccccc;
-  line-height: 1.8;
-}
-
-.customer {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
-  margin-top: 25px;
-  background: rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  border-radius: 12px;
-  color: #ffffff;
-  /* Removed large margin-left for better responsiveness */
-  width: fit-content;
-  margin-inline: auto; 
+/* Home Button */
+button {
+  margin: 80px 0 0 40px; /* Moves it below the profile image line */
+  background: linear-gradient(to right, #6366f1, #a855f7);
+  border: none;
+  padding: 8px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 .h {
-  padding: 10px 20px;
-  background: linear-gradient(to right, #4e54c8, #6a11cb);
   color: white;
-  border-radius: 50px;
-  font-weight: bold;
-  text-align: center;
-}
-
-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.2s;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 button:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Content Container */
+.container {
+  max-width: 600px;
+  margin: 20px auto 60px;
+  padding: 30px;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.name {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.name h2 {
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.name p {
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* Info Section Grid */
+.customer {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 12px;
+  background: rgba(15, 23, 42, 0.5);
+  padding: 20px;
+  border-radius: 16px;
+  margin-bottom: 25px;
+}
+
+.customer span:nth-child(odd) {
+  color: #818cf8; /* Light Indigo */
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.customer span:nth-child(even) {
+  color: #f1f5f9;
+  word-break: break-all;
+}
+
+/* About Me Section */
+.section h3 {
+  color: #818cf8;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.section p {
+  color: #cbd5e1;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+footer {
+  text-align: center;
+  padding: 30px;
+  color: #64748b;
+  font-size: 12px;
 }
