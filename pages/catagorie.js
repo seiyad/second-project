@@ -26,7 +26,8 @@ frm.addEventListener("submit",function(e){
             catagorie:catagorieEl.value.trim()
 
         })
-        return
+        clearElements();
+        return;
     }
     //insert
     const newUser = {
@@ -38,6 +39,7 @@ frm.addEventListener("submit",function(e){
 });
 function clearElements(){
     catagorieEl.value="";
+    idEl.value="";
 }
 
 onValue(userListInDp,function(snapshot){
@@ -55,8 +57,15 @@ onValue(userListInDp,function(snapshot){
             <tr>
             <td>${i+1}</td>
             <td>${currentUserValue.catagorie}</td>
-            <td><button type="button" class="btn-edit" data-id=${currentUserID}><ion-icon name="create-outline"></ion-icon></button></td>
-            <td><button type="button" class="btn-delete" data-id=${currentUserID}><ion-icon name="trash-outline" ></ion-icon></button></td>
+            <td><button type="button" class="btn-edit" data-id="${currentUserID}">
+            <ion-icon name="create-outline"></ion-icon>
+            </button>
+            </td>
+            <td>
+            <button type="button" class="btn-delete" data-id="${currentUserID}">
+            <ion-icon name="trash-outline" ></ion-icon>
+            </button>
+            </td>
           </tr>`
         }
     }else{
@@ -67,6 +76,7 @@ document.addEventListener("click", function (e) {
     if(e.target.classList.contains("btn-edit")){
         const id =e. target .dataset.id;
         const tdElements=e.target.closest("tr").children;
+        idEl.value = id;
         catagorieEl.value=tdElements[1].textContent;
     }else if (e.target.classList.contains("btn-delete")){
 
