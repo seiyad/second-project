@@ -16,14 +16,17 @@ const tblBodyEl = document.querySelector("#tblBody");
 
 frm.addEventListener("submit",function(e){
     e.preventDefault();
-
-    if (idEl.value){
-        //ubdate Record
-        return
-    }
     if(!catagorieEl.value.trim()){
         alert("pleae fill all Details");
         return;
+    }
+    if (idEl.value){
+        //ubdate Record
+        set(ref(database,"users/"+idEl.value),{
+            catagorie:catagorieEl.value.trim()
+
+        })
+        return
     }
     //insert
     const newUser = {
@@ -52,8 +55,8 @@ onValue(userListInDp,function(snapshot){
             <tr>
             <td>${i+1}</td>
             <td>${currentUserValue.catagorie}</td>
-            <td><button class="btn-edit"><ion-icon name="create-outline" data-id="${currentUserID}"></ion-icon></button></td>
-                        <td> <button class="btn-delete"><ion-icon name="trash-outline" data-id="${currentUserID}"></ion-icon></button></td>
+            <td><button type="button" class="btn-edit" data-id=${currentUserID}><ion-icon name="create-outline"></ion-icon></button></td>
+            <td><button type="button" class="btn-delete" data-id=${currentUserID}><ion-icon name="trash-outline" ></ion-icon></button></td>
           </tr>`
         }
     }else{
@@ -62,9 +65,16 @@ onValue(userListInDp,function(snapshot){
 });
 document.addEventListener("click", function (e) {
     if(e.target.classList.contains("btn-edit")){
-        console.log("Edit");
+        const id =e. target .dataset.id;
+        const tdElements=e.target.closest("tr").children;
+        catagorieEl.value=tdElements[1].textContent;
     }else if (e.target.classList.contains("btn-delete")){
-        console.log("Delete")
+
+        if(confirm("Are sure to delete?")){
+            const id =e. target .dataset.id;
+            let data =ref(database,`users/${id}`);
+            remove(data);
+        }
     }
 });
 // function deleteRow(btn) {
