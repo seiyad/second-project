@@ -16,6 +16,7 @@
       <a href="dashborard.html">Dashboard</a>
       <a href="expence.html">Expenses</a>
       <a href="catagorie.html">Category</a>
+      <a href="../index.html" class="ahead">LogOut</a>
     </div>
     <a href="profile.html">
       <div class="profile"><img src="../assest/download.jpg" alt="profile"></div>
@@ -26,11 +27,11 @@
     <div class="expense-header">
       <a href="addcatagorie.html"><button class="add-btn">+ Add Category</button></a>
     </div>
-    <form action="#" id="frm">
+    <!-- <form action="#" id="frm">
       <input type="hidden" id="id"/>
       <label for="caatgorie">Catagorie</label>
       <input type="text" id="catagorie" placeholder="catagorie"/>
-      <button type="submit"><ion-icon name="save-outline"></ion-icon></button>
+      <button type="submit" id="submit"><ion-icon name="save-outline"></ion-icon></button> -->
       <table class="catagorie-table" id="catTable">
         <tbody id="tblBody">
           <thead>
@@ -39,6 +40,12 @@
             <th>Edit</th>
             <th>Delete</th>
           </thead>
+          <tr>
+            <td>1</td>
+            <td>food</td>
+            <td><button class="btn-edit"><ion-icon name="create-outline"></ion-icon></button></td>
+            <td><button class="btn-delete"><ion-icon name="trash-outline"></ion-icon></button></td>
+          </tr>
         </tbody>
       </table>
     </form>
