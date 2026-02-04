@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Simple Login</title>
     <link rel="icon" type="image/x-icon" href="../assest/f9133a4dc4f047f835cef3115b270ac3.jpg">
@@ -8,20 +7,24 @@
 </head>
 
 <body>
-    <h1 class="head">Expense login</h1>
 
-    <div class="box">
-        <h2>Login</h2>
+<h1 class="head">Expense login</h1>
 
-        <input type="text" id="username" placeholder="Enter Username">
-        <input type="password" id="password" placeholder="Enter Password">
+<div class="box">
+    <h2>Login</h2>
 
-        <button id="login">Login</button>
-        <button id="register">Sign Up</button>
+    <form onsubmit="return false;">
+        <input type="email" id="username" placeholder="Enter Email" required>
+        <input type="password" id="password" placeholder="Enter Password" required>
 
-        <p id="msg"></p>
-    </div>
+        <button type="button" id="login">Login</button>
+        <button type="button" id="register">Sign Up</button>
+    </form>
 
-    <script src="./script.js" type="module"></script>
+    <p id="msg"></p>
+</div>
+
+<script type="module" src="./script.js"></script>
+
 </body>
 </html>
