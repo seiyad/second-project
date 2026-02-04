@@ -1,42 +1,29 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
-
-:root {
-    --bg-main: #09090b;
-    --bg-card: #121216;
-    --bg-soft: #1c1c24;
-    --text-main: #ffffff;
-    --text-muted: #a1a1aa;
-    --primary: #6366f1;
-    --border-soft: #27272a;
-    --success: #10b981;
-}
-
 * {
     margin: 0%;
     padding: 0%;
     z-index: auto;
     box-sizing: border-box;
-    font-family: 'Outfit', sans-serif;
+    font-family: sans-serif;
 }
 
 body {
     background-color: #0d1117;
-    color: #fff;
+    color: #ffffff;
 }
 
 .navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--bg-card);
+    background-color: #121216;
     padding: 20px 40px;
-    border-bottom: 1px solid var(--border-soft);
+    border-bottom: 1px solid #27272a;
 }
 
 .logo {
     font-size: 24px;
     font-weight: 800;
-    color: var(--text-main);
+    color: #ffffff;
 }
 
 .nav-links {
@@ -45,7 +32,7 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-muted);
+    color: #a1a1aa;
     text-decoration: none;
     font-weight: 500;
     padding: 8px 16px;
@@ -54,15 +41,14 @@ body {
 }
 
 .nav-links a:hover {
-    background: var(--bg-soft);
-    color: var(--text-main);
+    background: #1c1c24;
+    color: #ffffff;
 }
 
 .profile {
     width: 45px;
     height: 45px;
     background-color: transparent;
-    /* Override original */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -74,7 +60,7 @@ body {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid var(--border-soft);
+    border: 2px solid #27272a;
 }
 
 .container {
@@ -97,7 +83,7 @@ body {
     background-color: #04163c;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .card h3 {
@@ -111,17 +97,9 @@ body {
     font-weight: 600;
 }
 
-.card.red .amount {
-    color: #ff4e4e;
-}
-
-.card.green .amount {
-    color: #00d88a;
-}
-
-.card.blue .amount {
-    color: #7aa2ff;
-}
+.card.red .amount { color: #ff4e4e; }
+.card.green .amount { color: #00d88a; }
+.card.blue .amount { color: #7aa2ff; }
 
 .progress-card {
     background-color: #091f3f;
@@ -158,8 +136,8 @@ body {
 
 a:hover {
     background-color: #000000;
-    border: 1px solid rgb(195, 195, 195);
-    color: rgb(255, 225, 225);
+    border: 1px solid rgb(195,195,195);
+    color: rgb(255,225,225);
     border-radius: 10px;
 }
 
@@ -180,14 +158,12 @@ a:hover {
     transform: scale(1.02);
     background-color: #000000;
     border: 1px solid #ccc;
-
 }
 
 .card:hover {
     transform: scale(1.02);
     background-color: #000000;
-    border: 1px solid rgb(195, 195, 195);
-    box-shadow: 2px solid #ffffff;
+    border: 1px solid rgb(195,195,195);
 }
 
 footer {
@@ -205,24 +181,18 @@ a {
     text-decoration: none;
 }
 
-.profile img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.a{
+.a {
     background-color: red;
-    box-shadow: 1px 2px 1px rgb(220, 151, 151);
+    box-shadow: 1px 2px 1px rgb(220,151,151);
     height: 40px;
     width: 100px;
     border-radius: 8px;
     margin-left: 200px;
 }
-.b{
-    background-color: rgb(50, 231, 131);
-    box-shadow: 1px 2px 1px rgb(183, 226, 180);
+
+.b {
+    background-color: rgb(50,231,131);
+    box-shadow: 1px 2px 1px rgb(183,226,180);
     height: 40px;
     width: 100px;
     border-radius: 8px;
