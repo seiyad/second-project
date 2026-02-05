@@ -36,6 +36,7 @@ if (signOutBtn) {
     if (!user) {
       window.location.href = "index.html";
     } else {
+      window.location.href = "dashborard.html"
       // User is logged in, setup Expense Tracker
       // todo
       console.log(user);
