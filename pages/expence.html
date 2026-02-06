@@ -33,16 +33,17 @@
     </div>
 
     <table class="expense-table">
-      <thead>
-        <tr>
+      
+      <tbody>
+        <thead>
+          <th>S.No</th>
           <th>Expense Name</th>
           <th>Category</th>
           <th>Date</th>
           <th>Amount</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
+          <th>Edit</th>
+          <th>Delete</th>
+        </thead>
         <tr>
           <td><strong>Monthly Groceries</strong></td>
           <td>Food</td>
@@ -50,26 +51,7 @@
           <td>₹8,500.00</td>
           <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
         </tr>
-        <tr>
-          <td><strong>Electricity Bill</strong></td>
-          <td>Bills</td>
-          <td>05/09/25</td>
-          <td>₹2,200.00</td>
-          <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</td>
-        </tr>
-        <tr>
-          <td><strong>Petrol</strong></td>
-          <td>Transport</td>
-          <td>10/09/25</td>
-          <td>₹3,000.00</td>
-          <td> <button class="this" onclick="deleteRow(this)">Delte</button><button id="edit">Edit</button></td>
-        </tr>
-        <td><strong>Food</strong></td>
-        <td>Transport</td>
-        <td>02/11/21</td>
-        <td>₹3,000.00</td>
-        <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-        </tr>
+      </tbody>
     </table>
     <footer>&copy; Expense Tracker</footer>
     <script src="../pages/expence.js"></script>
