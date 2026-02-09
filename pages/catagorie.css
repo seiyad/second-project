@@ -43,13 +43,6 @@ body {
   object-fit: cover;
 }
 
-.container {
-  margin-top: 150px;
-  margin-left: 350px;
-
-
-}
-
 h1 {
   font-size: 32px;
   margin-bottom: 30px;
@@ -130,7 +123,7 @@ form input {
 }
 
 .btn-edit:hover {
-  background: #1c1c24;
+  background-color: #1c1c24;
 }
 
 .btn-delete:hover {
@@ -143,9 +136,8 @@ form input {
 }
 
 footer {
-  position: fixed;
   bottom: 0;
-  width: 100%;
+  width: auto;
   background: #121216;
   color: #a1a1aa;
   text-align: center;
@@ -153,5 +145,7 @@ footer {
   border-top: 1px solid #27272a;
 }
 #catagorie{
-  width: 200px;
+  width: fit-content;
+  align-self: center;
+  margin: 10% ;
 }
