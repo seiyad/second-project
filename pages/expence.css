@@ -181,3 +181,86 @@ footer {
   font-size: 14px;
   border-top: 1px solid #27272a;
 }
+#submit {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#submit ion-icon {
+  font-size: 20px;
+  color: white;
+}
+
+.catagorie-table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+  background: #121216;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.catagorie-table th,
+.catagorie-table td {
+  padding: 16px;
+  border-bottom: 1px solid #27272a;
+}
+
+.catagorie-table th {
+  background: #1c1c24;
+  color: #a1a1aa;
+}
+
+.btn-edit,
+.btn-delete {
+  background: transparent;
+  border: 1px solid #27272a;
+  padding: 8px 10px;
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-edit ion-icon {
+  color: #6366f1;
+  font-size: 18px;
+}
+
+.btn-delete ion-icon {
+  color: #ef4444;
+  font-size: 18px;
+}
+
+.btn-edit:hover {
+  background: #1c1c24;
+}
+
+.btn-delete:hover {
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.btn-edit ion-icon,
+.btn-delete ion-icon {
+  pointer-events: none;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #121216;
+  color: #a1a1aa;
+  text-align: center;
+  padding: 15px ;
+  border-top: 1px solid #27272a;
+}
+#catagorie{
+  width: 200px;
+}

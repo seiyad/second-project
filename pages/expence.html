@@ -32,27 +32,54 @@
       <a href="addexpence.html"><button class="add-btn">+ Add Expense</button></a>
     </div>
 
-    <table class="expense-table">
-      
-      <tbody>
-        <thead>
-          <th>S.No</th>
-          <th>Expense Name</th>
-          <th>Category</th>
-          <th>Date</th>
-          <th>Amount</th>
-          <th>Edit</th>
-          <th>Delete</th>
-        </thead>
-        <tr>
-          <td><strong>Monthly Groceries</strong></td>
-          <td>Food</td>
-          <td>01/09/25</td>
-          <td>₹8,500.00</td>
-          <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- <form action="#" id="frm">
+      <input type="hidden" id="id" />
+      <label for="catgorie">Add Catagorie</label>
+      <input type="text" id="catagorie" placeholder="catagorie" />
+      <button type="submit" id="submit"><ion-icon name="save-outline"></ion-icon></button>
+      <table class="catagorie-table" id="catTable">
+        <tbody id="tblBody">
+          <thead>
+            <th>S.No</th>
+            <th>Category</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+        </tbody>
+      </table>
+    </form>
+    </div> -->
+    <form action="#" id="frm">
+      <input type="hidden" id="id" />
+      <label for="Expense">Add Expence Name</label>
+      <input type="text" id="ExpenseName" placeholder="ExpenseName"/>
+      <label for="ExpenseCatagorie">Add Expence Catagorie</label>
+      <input type="text" id="ExpenseCatagorie" placeholder="Catagorie"/>
+      <label for="Date">Add ExpenceDate</label>
+      <input type="text" id="Date" placeholder="ExpenseDate"/>
+      <label for="Amount">Add Expence Amount</label>
+      <input type="text" id="Amount" placeholder="ExpenseAmount"/>
+      <table class="expense-table" id="expense-tbl">
+        <tbody id="tblBody">
+          <thead>
+            <th>S.No</th>
+            <th>Expense Name</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Amount</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </thead>
+          <tr>
+            <td><strong>Monthly Groceries</strong></td>
+            <td>Food</td>
+            <td>01/09/25</td>
+            <td>₹8,500.00</td>
+            <td> <button class="this" onclick="deleteRow(this)">Delete</button><button id="edit">Edit</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
     <footer>&copy; Expense Tracker</footer>
     <script src="../pages/expence.js"></script>
 </body>
