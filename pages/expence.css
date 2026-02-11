@@ -5,9 +5,13 @@
 }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Outfit', sans-serif;
   background-color: #09090b;
   color: #ffffff;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 /* NAVBAR */
@@ -85,33 +89,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-h1 {
-  font-size: 32px;
-  margin-bottom: 30px;
-  font-weight: 700;
-}
-
-.add-btn {
-  background-color: #10b981;
-  border: none;
-  color: white;
-  padding: 12px 24px;
-  border-radius: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  float: right;
-  margin-bottom: 20px;
-  transition: all 0.2s ease;
-}
-
-.add-btn:hover {
-  filter: brightness(1.1);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(16,185,129,0.3);
-}
-
-/* TABLE */
 .expense-table {
   width: 100%;
   border-collapse: separate;
@@ -139,7 +116,7 @@ h1 {
 }
 
 .expense-table tr:hover td {
-  background-color: rgba(255,255,255,0.02);
+  background-color: rgba(255, 255, 255, 0.02);
 }
 
 .expense-table tr:last-child td {
@@ -165,7 +142,7 @@ button {
 }
 
 .this:hover {
-  background: rgba(239,68,68,0.1);
+  background: rgba(239, 68, 68, 0.1);
   color: #ef4444;
   border-color: #ef4444;
 }
@@ -181,6 +158,7 @@ footer {
   font-size: 14px;
   border-top: 1px solid #27272a;
 }
+
 #submit {
   background: #6366f1;
   color: white;
@@ -197,7 +175,7 @@ footer {
   color: white;
 }
 
-.catagorie-table {
+.expense-table {
   width: 100%;
   margin-top: 30px;
   border-collapse: collapse;
@@ -206,13 +184,13 @@ footer {
   overflow: hidden;
 }
 
-.catagorie-table th,
-.catagorie-table td {
+.expense-table th,
+.expense-table td {
   padding: 16px;
   border-bottom: 1px solid #27272a;
 }
 
-.catagorie-table th {
+.expense-table th {
   background: #1c1c24;
   color: #a1a1aa;
 }
@@ -258,9 +236,27 @@ footer {
   background: #121216;
   color: #a1a1aa;
   text-align: center;
-  padding: 15px ;
+  padding: 15px;
   border-top: 1px solid #27272a;
 }
-#catagorie{
+
+#ExpenseName {
   width: 200px;
+}
+
+#ExpenseCatagorie {
+  width: 200px;
+}
+
+#ExpenseDate {
+  width: 200px;
+}
+
+#ExpenseAmount {
+  width: 200px;
+}
+.container h1{
+  background: -webkit-linear-gradient(#6028e2, #d5bbff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color:transparent;
 }

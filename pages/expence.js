@@ -6,7 +6,7 @@ const appSetting = {
 
 const app=initializeApp(appSetting);
 const database=getDatabase(app);
-const userListInDp=ref(database,"Expence");
+const userListInDp=ref(database,"users");
 
 const idEl = document.querySelector("#id");
 const catagorieEl = document.querySelector("#catagorie");
