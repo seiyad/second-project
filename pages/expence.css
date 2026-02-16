@@ -260,3 +260,21 @@ footer {
   -webkit-background-clip: text;
   -webkit-text-fill-color:transparent;
 }
+form {
+  width:100%;
+  max-width:400px;
+  margin:0 auto;
+}
+
+form label {
+  font-weight: 500;
+}
+
+form input {
+  width: auto;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+}
