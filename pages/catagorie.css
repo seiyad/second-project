@@ -13,6 +13,16 @@ body {
   min-height: 100vh;
 }
 
+/* main container center */
+.container{
+  width:100%;
+  max-width:500px;
+  margin:40px auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -50,11 +60,14 @@ body {
 h1 {
   font-size: 32px;
   margin-bottom: 30px;
+  text-align:center;
 }
 
+/* form center */
 form {
-  width: 400px;
-  margin: 10px 40pc;
+  width:100%;
+  max-width:400px;
+  margin:0 auto;
 }
 
 form label {
@@ -86,6 +99,7 @@ form input {
   color: white;
 }
 
+/* category table */
 .catagorie-table {
   width: 100%;
   margin-top: 30px;
@@ -93,17 +107,25 @@ form input {
   background: #121216;
   border-radius: 12px;
   overflow: hidden;
+  text-align:left;
 }
 
 .catagorie-table th,
 .catagorie-table td {
   padding: 16px;
   border-bottom: 1px solid #27272a;
+  vertical-align:middle;
 }
 
 .catagorie-table th {
   background: #1c1c24;
   color: #a1a1aa;
+}
+
+/* action column center */
+.catagorie-table td:last-child,
+.catagorie-table th:last-child{
+  text-align:center;
 }
 
 .btn-edit,
@@ -152,13 +174,17 @@ footer {
   margin-bottom:0px;
   border-top: 1px solid #27272a;
 }
+
+/* category section center */
 #catagorie{
   width: fit-content;
   align-self: center;
-  margin: 10% ;
+  margin:40px auto;
 }
+
+/* heading style */
 .container h1{
-  margin: 10px 40pc;
+  margin:20px 0;
   background: -webkit-linear-gradient(#0a77fe, #0a206c);
   -webkit-background-clip: text;
   -webkit-text-fill-color:transparent;
