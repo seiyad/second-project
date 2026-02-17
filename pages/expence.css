@@ -84,11 +84,11 @@ body {
 .container h1 {
   margin-bottom: 30px;
 
-  background: linear-gradient(#6028e2, #d5bbff); /* standard */
-  background: -webkit-linear-gradient(#6028e2, #d5bbff); /* fallback */
+  background: linear-gradient(#6028e2, #d5bbff);
+  background: -webkit-linear-gradient(#6028e2, #d5bbff);
 
-  background-clip: text; /* standard */
-  -webkit-background-clip: text; /* for Chrome/Safari */
+  background-clip: text;
+  -webkit-background-clip: text;
 
   -webkit-text-fill-color: transparent;
 }
