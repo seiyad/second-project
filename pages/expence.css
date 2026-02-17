@@ -8,7 +8,6 @@ body {
   font-family: 'Outfit', sans-serif;
   background-color: #09090b;
   color: #ffffff;
-  margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -24,11 +23,6 @@ body {
   border-bottom: 1px solid #27272a;
 }
 
-.logo {
-  font-size: 24px;
-  font-weight: 800;
-}
-
 .nav-links {
   display: flex;
   gap: 30px;
@@ -40,7 +34,7 @@ body {
   font-weight: 500;
   padding: 8px 16px;
   border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .nav-links a:hover {
@@ -62,11 +56,6 @@ body {
   background-color: #1c1c24;
   color: #ffffff;
   width: 250px;
-  transition: border-color 0.3s ease;
-}
-
-.search-profile input:focus {
-  border-color: #6366f1;
 }
 
 .profile {
@@ -83,12 +72,59 @@ body {
   object-fit: cover;
 }
 
-/* CONTENT */
+/* CONTAINER */
 .container {
   padding: 40px;
   max-width: 1200px;
   margin: 0 auto;
+  flex: 1;
 }
+
+.container h1 {
+  margin-bottom: 30px;
+  background: -webkit-linear-gradient(#6028e2, #d5bbff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* FORM */
+form {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+form label {
+  font-weight: 500;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #27272a;
+  background: #1c1c24;
+  color: #ffffff;
+}
+
+#submit {
+  background: #6366f1;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+#submit ion-icon {
+  font-size: 20px;
+}
+
+/* TABLE */
 .expense-table {
   width: 100%;
   border-collapse: separate;
@@ -101,7 +137,7 @@ body {
 
 .expense-table th,
 .expense-table td {
-  padding: 20px;
+  padding: 16px;
   text-align: left;
   border-bottom: 1px solid #27272a;
 }
@@ -116,85 +152,14 @@ body {
 }
 
 .expense-table tr:hover td {
-  background-color: rgba(255, 255, 255, 0.02);
+  background-color: rgba(255, 255, 255, 0.03);
 }
 
 .expense-table tr:last-child td {
   border-bottom: none;
 }
 
-/* ACTION BUTTONS */
-button {
-  cursor: pointer;
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid #27272a;
-  background: transparent;
-  color: #a1a1aa;
-  transition: all 0.2s ease;
-  margin-right: 5px;
-}
-
-#edit:hover {
-  background: #1c1c24;
-  color: #6366f1;
-  border-color: #6366f1;
-}
-
-.this:hover {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  border-color: #ef4444;
-}
-
-footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  background-color: #121216;
-  color: #a1a1aa;
-  text-align: center;
-  padding: 15px 0;
-  font-size: 14px;
-  border-top: 1px solid #27272a;
-}
-
-#submit {
-  background: #6366f1;
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 8px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#submit ion-icon {
-  font-size: 20px;
-  color: white;
-}
-
-.expense-table {
-  width: 100%;
-  margin-top: 30px;
-  border-collapse: collapse;
-  background: #121216;
-  border-radius: 12px;
-  overflow: hidden;
-}
-
-.expense-table th,
-.expense-table td {
-  padding: 16px;
-  border-bottom: 1px solid #27272a;
-}
-
-.expense-table th {
-  background: #1c1c24;
-  color: #a1a1aa;
-}
-
+/* BUTTONS */
 .btn-edit,
 .btn-delete {
   background: transparent;
@@ -204,6 +169,7 @@ footer {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 .btn-edit ion-icon {
@@ -229,52 +195,11 @@ footer {
   pointer-events: none;
 }
 
+/* FOOTER */
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
   background: #121216;
   color: #a1a1aa;
   text-align: center;
   padding: 15px;
   border-top: 1px solid #27272a;
-}
-
-#ExpenseName {
-  width: 200px;
-}
-
-#ExpenseCatagorie {
-  width: 200px;
-}
-
-#ExpenseDate {
-  width: 200px;
-}
-
-#ExpenseAmount {
-  width: 200px;
-}
-.container h1{
-  background: -webkit-linear-gradient(#6028e2, #d5bbff);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color:transparent;
-}
-form {
-  width:100%;
-  max-width:400px;
-  margin:0 auto;
-}
-
-form label {
-  font-weight: 500;
-}
-
-form input {
-  width: auto;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 6px;
-  border: none;
-  outline: none;
 }

@@ -10,10 +10,10 @@ const database = getDatabase(app);
 const expenseListInDp = ref(database, "expenses");
 
 const idEl = document.querySelector("#id");
-const nameEl = document.querySelector("#name");
-const catagorieEl = document.querySelector("#catagorie");
-const dateEl = document.querySelector("#date");
-const amountEl = document.querySelector("#amount");
+const nameEl = document.querySelector("#ExpenseName");
+const catagorieEl = document.querySelector("#ExpenseCatagorie");
+const dateEl = document.querySelector("#Date");
+const amountEl = document.querySelector("#Amount");
 const frmEl = document.querySelector("#frm");
 const tblBodyEl = document.querySelector("#tblBody");
 

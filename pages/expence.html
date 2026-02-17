@@ -4,60 +4,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Xpense Expence</title>
+  <title>Xpense Expense</title>
   <link rel="icon" type="image/x-icon" href="../assest/f9133a4dc4f047f835cef3115b270ac3.jpg">
   <link rel="stylesheet" href="expence.css">
 </head>
 
 <body>
+
   <header class="navbar">
-    <div class="logo"><img src="../assest/glogo.png" alt="Xpence" width="200px"></div>
+    <div class="logo">
+      <img src="../assest/glogo.png" alt="Xpence" width="200px">
+    </div>
+
     <nav class="nav-links">
       <a href="dashborard.html">Dashboard</a>
       <a href="expence.html">Expense</a>
       <a href="catagorie.html">Category</a>
       <a href="../index.html" class="ahead">LogOut</a>
     </nav>
+
     <div class="search-profile">
       <input type="text" placeholder="Search expenses...">
       <a href="profile.html">
-        <div class="profile"><img src="../assest/download.jpg" alt="profile"></div>
+        <div class="profile">
+          <img src="../assest/download.jpg" alt="profile">
+        </div>
       </a>
     </div>
   </header>
 
   <div class="container">
     <h1>All Expenses</h1>
+
     <form action="#" id="frm">
       <input type="hidden" id="id" />
-      <label for="Expense">Add Expence Name</label>
-      <input type="text" id="ExpenseName" placeholder="ExpenseName" />
-      <label for="ExpenseCatagorie">Add Expence Catagorie</label>
-      <input type="text" id="ExpenseCatagorie" placeholder="Catagorie" />
-      <label for="Date">Add ExpenceDate</label>
-      <input type="text" id="Date" placeholder="ExpenseDate" />
-      <label for="Amount">Add Expence Amount</label>
-      <input type="text" id="Amount" placeholder="ExpenseAmount" />
-      <button type="submit" id="submit"><ion-icon name="save-outline"></ion-icon></button>
-      <table class="expense-table" id="expense-tbl">
-        <tbody id="tblBody">
-          <thead>
-            <th>S.No</th>
-            <th>Expense Name</th>
-            <th>Category</th>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </thead>
-        </tbody>
-      </table>
-    </form>
-  </div>
-  <footer>&copy; Expense Tracker</footer>
-</body>
-<script src="../pages/expence.js" type="module"></script>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
+      <label>Add Expense Name</label>
+      <input type="text" id="ExpenseName" placeholder="Expense Name" />
+
+      <label>Add Expense Category</label>
+      <input type="text" id="ExpenseCatagorie" placeholder="Category" />
+
+      <label>Add Expense Date</label>
+      <input type="date" id="Date" />
+
+      <label>Add Expense Amount</label>
+      <input type="number" id="Amount" placeholder="Amount" />
+
+      <button type="submit" id="submit">
+        <ion-icon name="save-outline"></ion-icon>
+      </button>
+    </form>
+
+    <table class="expense-table" id="expense-tbl">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Expense Name</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="tblBody"></tbody>
+    </table>
+
+  </div>
+
+  <footer>&copy; Expense Tracker</footer>
+
+  <script src="../pages/expence.js" type="module"></script>
+
+  <script type="module"
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js">
+  </script>
+  <script nomodule
+    src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js">
+  </script>
+
+</body>
 </html>
