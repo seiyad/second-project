@@ -45,7 +45,7 @@ registerBtn.addEventListener("click", () => {
   createUserWithEmailAndPassword(auth, email, password)
     .then(() => {
       alert("Registration Successful!");
-      window.location.href = "dashboard.html";
+      window.location.href = "dashborard.html";
     })
     .catch((error) => {
       alert(error.message);
