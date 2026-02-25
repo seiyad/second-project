@@ -1,14 +1,10 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAWfXbLyYQKrWfnZPdpo25WOr7n9N4M78c",
   authDomain: "expense-trakker.firebaseapp.com",
+  databaseURL: "https://expense-trakker-default-rtdb.firebaseio.com",
   projectId: "expense-trakker",
   storageBucket: "expense-trakker.firebasestorage.app",
   messagingSenderId: "654573857096",
@@ -16,6 +12,6 @@ const firebaseConfig = {
   measurementId: "G-HNE0SX7PFX"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
+export const auth = getAuth(app);
