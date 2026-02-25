@@ -10,7 +10,6 @@ const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("login");
 const registerBtn = document.getElementById("register");
 
-// 🔐 LOGIN
 loginBtn.addEventListener("click", () => {
 
   const email = emailInput.value;
@@ -30,8 +29,6 @@ loginBtn.addEventListener("click", () => {
     });
 });
 
-
-// 🆕 REGISTER
 registerBtn.addEventListener("click", () => {
 
   const email = emailInput.value;
@@ -52,10 +49,8 @@ registerBtn.addEventListener("click", () => {
     });
 });
 
-
-// 🔄 Auto Redirect if already logged in
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location.href = "../pages/dashborard.html";
+    window.location.href = "./pages/dashborard.html";
   }
 });

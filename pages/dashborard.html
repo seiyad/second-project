@@ -1,67 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Xpense Dashboard</title>
-  <link rel="icon" type="image/x-icon" href="../class/assest/f9133a4dc4f047f835cef3115b270ac3.jpg">
-  <link rel="stylesheet" href="../pages/dashboard.css">
-
+  <link rel="stylesheet" href="./dashboard.css">
 </head>
 
 <body>
+
   <nav class="navbar">
-    <div class="logo"><img src="../assest/glogo.png" height="50px" width="170px" alt=""></div>
+    <div class="logo">Xpense</div>
+
     <div class="nav-links">
-      <a href="dashborard.html"><ion-icon name="home-sharp"></ion-icon>Dashboard</a>
-      <a href="expence.html"><i class="ri-bill-fill"></i>Expense</a>
-      <a href="catagorie.html">Category</a>
+      <a href="../pages/dashborard.html">Dashboard</a>
+      <a href="../pages/expence.html">Expense</a>
+      <a href="../pages/catagorie.html">Category</a>
+      <a href="../pages/profile.html">Profile</a>
       <button id="logout">Logout</button>
     </div>
-    <a href="profile.html">
-      <div class="profile"><img src="../assest/download.jpg" alt=" profile" height></div>
-    </a>
+
+    <div class="profile">
+      <span id="userEmail"></span>
+    </div>
   </nav>
+
   <section class="container">
     <h1>Dashboard</h1>
 
     <div class="cards">
+
       <div class="card red">
         <h3>Total Spent (This Month)</h3>
-        <div class="amount">₹15,750.00</div>
+        <div class="amount" id="totalSpent">₹0.00</div>
       </div>
 
       <div class="card green">
         <h3>Remaining Budget</h3>
-        <div class="amount">₹34,250.00</div>
+        <div class="amount" id="remainingBudget">₹0.00</div>
       </div>
 
       <div class="card blue">
         <h3>Highest Expense</h3>
-        <div class="amount">₹8,500.00</div>
+        <div class="amount" id="highestExpense">₹0.00</div>
       </div>
+
     </div>
 
-    <div class="progress-card">
-      <h3>Monthly Budget Progress</h3>
-      <div class="progress-container1">
-        <div class="progress-bar" style="width: 31.5%;"></div>
+    <!-- Monthly Progress Bar (Using Old Style Layout) -->
+    <div class="card" style="margin-top:30px;">
+      <h3>Monthly Progress</h3>
+
+      <div style="width:100%;height:20px;background:#eee;border-radius:20px;overflow:hidden;margin-top:10px;">
+        <div id="monthlyProgressBar"
+             style="height:100%;width:0%;background:#ff3b3b;transition:0.4s;">
+        </div>
       </div>
-      <div class="progress-info">₹15,750.00 / ₹50,000.00</div>
+
+      <p id="progressText" style="margin-top:10px;">
+        0% of monthly budget used
+      </p>
     </div>
+
   </section>
-  </div>
-  <!-- <div>
-    <a href="../pages/expensebutton.html"><button class="a">Add Expence</button></a>
-    <a href="../pages/creditbutton.html"><button class="b">Add Credits</button></a>
-  </div> -->
+
   <footer>
     &copy; Expense Tracker
   </footer>
 
-</body>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script type="module" src="./script.js"></script>
 
+</body>
 </html>

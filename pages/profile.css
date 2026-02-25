@@ -6,13 +6,12 @@
 }
 
 body {
-  background-color: #0f172a; /* Deep Dark Blue/Black */
+  background-color: #0f172a;
   color: #f8fafc;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* Header with Gradient */
 .header {
   height: 220px;
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
@@ -26,15 +25,16 @@ body {
 .header h1 {
   font-size: 80px;
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.03); /* Ghost text effect */
+  color: rgba(255, 255, 255, 0.03);
   letter-spacing: 20px;
   position: absolute;
 }
 
-/* Profile Image with Border Glow */
 .profile-img {
   position: absolute;
   bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
   width: 130px;
   height: 130px;
   border-radius: 50%;
@@ -55,9 +55,8 @@ body {
   transform: scale(1.1);
 }
 
-/* Home Button */
 button {
-  margin: 80px 0 0 40px; /* Moves it below the profile image line */
+  margin: 80px 0 0 40px;
   background: linear-gradient(to right, #6366f1, #a855f7);
   border: none;
   padding: 8px 20px;
@@ -77,10 +76,9 @@ button:hover {
   box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
 }
 
-/* Content Container */
 .container {
   max-width: 600px;
-  margin: 20px auto 60px;
+  margin: 80px auto 60px;
   padding: 30px;
   background: rgba(30, 41, 59, 0.7);
   backdrop-filter: blur(10px);
@@ -104,7 +102,6 @@ button:hover {
   font-size: 14px;
 }
 
-/* Info Section Grid */
 .customer {
   display: grid;
   grid-template-columns: 120px 1fr;
@@ -116,7 +113,7 @@ button:hover {
 }
 
 .customer span:nth-child(odd) {
-  color: #818cf8; /* Light Indigo */
+  color: #818cf8;
   font-weight: 600;
   font-size: 14px;
   text-transform: uppercase;
@@ -127,7 +124,6 @@ button:hover {
   word-break: break-all;
 }
 
-/* About Me Section */
 .section h3 {
   color: #818cf8;
   margin-bottom: 10px;
@@ -140,9 +136,27 @@ button:hover {
   line-height: 1.7;
 }
 
+#logoutButton {
+  background: linear-gradient(to right, #ef4444, #dc2626);
+  margin-top: 20px;
+}
+
 footer {
   text-align: center;
   padding: 30px;
   color: #64748b;
   font-size: 12px;
+}
+.profile-avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #4CAF50;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
 }
