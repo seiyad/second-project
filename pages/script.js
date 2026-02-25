@@ -56,6 +56,6 @@ registerBtn.addEventListener("click", () => {
 // 🔄 Auto Redirect if already logged in
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location.href = "dashboard.html";
+    window.location.href = "../dashboarard.html";
   }
 });
