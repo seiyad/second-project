@@ -45,7 +45,7 @@ registerBtn.addEventListener("click", () => {
   createUserWithEmailAndPassword(auth, email, password)
     .then(() => {
       alert("Registration Successful!");
-      window.location.href = "./pages/dashboard.html";
+      window.location.href = "dashboard.html";
     })
     .catch((error) => {
       alert(error.message);
@@ -56,6 +56,6 @@ registerBtn.addEventListener("click", () => {
 // 🔄 Auto Redirect if already logged in
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location.href = "./pages/dashboard.html";
+    window.location.href = "dashboard.html";
   }
 });
