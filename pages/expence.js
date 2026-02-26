@@ -4,126 +4,113 @@ import { getDatabase, ref, set, onValue, remove }
 import { onAuthStateChanged } 
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-const database = getDatabase(app);
+const db = getDatabase(app);
 
-const idEl = document.querySelector("#id");
 const nameEl = document.querySelector("#ExpenseName");
-const catagorieEl = document.querySelector("#ExpenseCatagorie");
+const catEl = document.querySelector("#ExpenseCatagorie");
 const dateEl = document.querySelector("#Date");
 const amountEl = document.querySelector("#Amount");
 const frmEl = document.querySelector("#frm");
-const tblBodyEl = document.querySelector("#tblBody");
+const tblBody = document.querySelector("#tblBody");
 
 let userUID = null;
 
-// Wait for user login
+// 1️⃣ Auth check and load project
 onAuthStateChanged(auth, (user) => {
     if (!user) {
         window.location.href = "../index.html";
     } else {
         userUID = user.uid;
-        loadExpenses();
+        renderTable(); // load table
     }
 });
 
-// Submit or update project
-frmEl.addEventListener("submit", async function(e) {
+// 2️⃣ Submit form
+frmEl.addEventListener("submit", (e) => {
     e.preventDefault();
-
-    if (!nameEl.value.trim() || !catagorieEl.value.trim() || !dateEl.value.trim() || !amountEl.value.trim()) {
-        alert("Please fill all details");
+    if (!nameEl.value || !catEl.value || !dateEl.value || !amountEl.value) {
+        alert("Please fill all fields");
         return;
     }
-
-    if (!userUID) {
-        alert("User not logged in");
-        return;
-    }
-
-    const userExpenseRef = ref(database, "expenses/" + userUID);
+    const userRef = ref(db, "expenses/" + userUID);
 
     // Check if user already has a project
-    const snapshot = await new Promise((resolve) => onValue(userExpenseRef, resolve, { onlyOnce: true }));
-    if (!idEl.value && snapshot.exists()) {
-        alert("You already have a project. Cannot create another.");
-        return;
-    }
-
-    const expenseData = {
-        name: nameEl.value.trim(),
-        catagorie: catagorieEl.value.trim(),
-        date: dateEl.value.trim(),
-        amount: amountEl.value.trim()
-    };
-
-    set(userExpenseRef, expenseData);
-    clearElements();
+    onValue(userRef, (snap) => {
+        if (snap.exists() && !snap.val().allowEdit) {
+            alert("You already have a project. Cannot create another.");
+            return;
+        } else {
+            const data = {
+                name: nameEl.value,
+                catagorie: catEl.value,
+                date: dateEl.value,
+                amount: amountEl.value,
+                allowEdit: true // flag to allow edit later
+            };
+            set(userRef, data).then(() => {
+                clearForm();
+                renderTable(); // reload table immediately
+            });
+        }
+    }, { onlyOnce: true });
 });
 
-// Clear form
-function clearElements() {
-    nameEl.value = "";
-    catagorieEl.value = "";
-    dateEl.value = "";
-    amountEl.value = "";
-    idEl.value = "";
-}
+// 3️⃣ Load/render table
+function renderTable() {
+    const userRef = ref(db, "expenses/" + userUID);
 
-// Load user project
-function loadExpenses() {
-    const userExpenseRef = ref(database, "expenses/" + userUID);
-
-    onValue(userExpenseRef, (snapshot) => {
-        tblBodyEl.innerHTML = "";
-        if (snapshot.exists()) {
-            const expense = snapshot.val();
-            tblBodyEl.innerHTML = `
+    onValue(userRef, (snap) => {
+        tblBody.innerHTML = "";
+        if (snap.exists()) {
+            const exp = snap.val();
+            tblBody.innerHTML = `
                 <tr>
                     <td>1</td>
-                    <td>${expense.name}</td>
-                    <td>${expense.catagorie}</td>
-                    <td>${expense.date}</td>
-                    <td>${expense.amount}</td>
-                    <td>
-                        <button type="button" class="btn-edit">
-                            <ion-icon name="create-outline"></ion-icon>
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn-delete">
-                            <ion-icon name="trash-outline"></ion-icon>
-                        </button>
-                    </td>
+                    <td>${exp.name}</td>
+                    <td>${exp.catagorie}</td>
+                    <td>${exp.date}</td>
+                    <td>${exp.amount}</td>
+                    <td><button class="edit">Edit</button></td>
+                    <td><button class="delete">Delete</button></td>
                 </tr>
             `;
-            idEl.value = userUID;
         } else {
-            tblBodyEl.innerHTML = "<tr><td colspan='7'>No Record Found</td></tr>";
+            tblBody.innerHTML = "<tr><td colspan='7'>No Record Found</td></tr>";
         }
     });
 }
 
-// Delete project
-document.addEventListener("click", function (e) {
-    const editBtn = e.target.closest(".btn-edit");
-    const deleteBtn = e.target.closest(".btn-delete");
+// 4️⃣ Clear form
+function clearForm() {
+    nameEl.value = "";
+    catEl.value = "";
+    dateEl.value = "";
+    amountEl.value = "";
+}
 
-    const userExpenseRef = ref(database, "expenses/" + userUID);
+// 5️⃣ Edit/Delete
+document.addEventListener("click", (e) => {
+    if (!userUID) return;
+    const userRef = ref(db, "expenses/" + userUID);
 
-    if (editBtn) {
-        onValue(userExpenseRef, (snapshot) => {
-            const expense = snapshot.val();
-            nameEl.value = expense.name;
-            catagorieEl.value = expense.catagorie;
-            dateEl.value = expense.date;
-            amountEl.value = expense.amount;
+    if (e.target.classList.contains("edit")) {
+        onValue(userRef, (snap) => {
+            if (snap.exists()) {
+                const exp = snap.val();
+                nameEl.value = exp.name;
+                catEl.value = exp.catagorie;
+                dateEl.value = exp.date;
+                amountEl.value = exp.amount;
+            }
         }, { onlyOnce: true });
     }
 
-    if (deleteBtn) {
-        if (confirm("Are you sure to delete?")) {
-            remove(userExpenseRef);
-            clearElements();
+    if (e.target.classList.contains("delete")) {
+        if (confirm("Delete project?")) {
+            remove(userRef).then(() => {
+                clearForm();
+                renderTable();
+            });
         }
     }
 });
