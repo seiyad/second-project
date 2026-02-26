@@ -1,8 +1,14 @@
-import { auth } from "./firebase.js";
+import { auth, db } from "../firebase.js";
+
 import { 
   createUserWithEmailAndPassword,
   updateProfile
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+import {
+  doc,
+  setDoc
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
 
 const username = document.getElementById("user");
 const email = document.getElementById("userName");
@@ -11,7 +17,7 @@ const registerBtn = document.getElementById("register");
 
 registerBtn.addEventListener("click", async () => {
 
-  if (username.value === "" || email.value === "" || password.value === "") {
+  if (!username.value || !email.value || !password.value) {
     alert("Please fill all fields");
     return;
   }
@@ -23,12 +29,21 @@ registerBtn.addEventListener("click", async () => {
       password.value
     );
 
-    await updateProfile(userCredential.user, {
+    const user = userCredential.user;
+
+    await updateProfile(user, {
       displayName: username.value
     });
 
+    await setDoc(doc(db, "users", user.uid), {
+      username: username.value,
+      email: email.value,
+      uid: user.uid,
+      createdAt: new Date()
+    });
+
     alert("Registration Successful");
-    window.location.href = "../pages/dashboard.html";
+    window.location.href = "dashboard.html";
 
   } catch (error) {
     alert(error.message);
