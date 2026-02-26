@@ -21,7 +21,7 @@ frm.addEventListener("submit",function(e){
         return;
     }
     if (idEl.value){
-        //ubdate Record
+        
         set(ref(database,"users/"+idEl.value),{
             catagorie:catagorieEl.value.trim()
 
@@ -29,7 +29,7 @@ frm.addEventListener("submit",function(e){
         clearElements();
         return;
     }
-    //insert
+   
     const newUser = {
         catagorie:catagorieEl.value.trim()
     };
@@ -45,11 +45,11 @@ function clearElements(){
 onValue(userListInDp,function(snapshot){
     if(snapshot.exists()) {
         let userArray = Object.entries(snapshot.val());
-        // console.log(userArray);
+        
         tblBodyEl.innerHTML="";
         for (let i = 0; i<userArray.length; i++) {
             let currentUser = userArray[i];
-            // console.log(currentUser)
+            
             let currentUserID = currentUser[0];
             let currentUserValue = currentUser[1];
 

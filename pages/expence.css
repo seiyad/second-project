@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-/* NAVBAR */
+
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -72,7 +72,7 @@ body {
   object-fit: cover;
 }
 
-/* CONTAINER */
+
 .container {
   padding: 40px;
   max-width: 1200px;
@@ -130,7 +130,7 @@ form input {
   font-size: 20px;
 }
 
-/* TABLE */
+
 .expense-table {
   width: 100%;
   border-collapse: separate;
@@ -165,7 +165,7 @@ form input {
   border-bottom: none;
 }
 
-/* BUTTONS */
+
 .btn-edit,
 .btn-delete {
   background: transparent;
@@ -201,7 +201,7 @@ form input {
   pointer-events: none;
 }
 
-/* FOOTER */
+
 footer {
   background: #121216;
   color: #a1a1aa;

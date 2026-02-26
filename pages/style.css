@@ -13,7 +13,7 @@
             justify-content: center;
         }
 
-        /* Main Container */
+       
         .main-container {
             display: flex;
             width: 900px;
@@ -24,10 +24,8 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
-        /* Left Side: Image */
         .image-section {
             flex: 1.2;
-            /* Image area konjam perusa irukum */
             background-color: #e0e0e0;
         }
 
@@ -95,7 +93,7 @@
             transform: translateY(-2px);
         }
 
-        /* Responsive: Mobile-ku image-ah hide pannidum */
+        
         @media (max-width: 768px) {
             .image-section {
                 display: none;

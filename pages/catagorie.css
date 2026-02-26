@@ -13,7 +13,7 @@ body {
   min-height: 100vh;
 }
 
-/* main container center */
+
 .container{
   width:100%;
   max-width:500px;
@@ -63,7 +63,7 @@ h1 {
   text-align:center;
 }
 
-/* form center */
+
 form {
   width:100%;
   max-width:400px;
@@ -99,7 +99,6 @@ form input {
   color: white;
 }
 
-/* category table */
 .catagorie-table {
   width: 100%;
   margin-top: 30px;
@@ -175,14 +174,14 @@ footer {
   border-top: 1px solid #27272a;
 }
 
-/* category section center */
+
 #catagorie{
   width: fit-content;
   align-self: center;
   margin:40px auto;
 }
 
-/* heading style */
+
 .container h1{
   margin:20px 0;
   background: -webkit-linear-gradient(#0a77fe, #0a206c);
