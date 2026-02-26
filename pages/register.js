@@ -1,56 +1,37 @@
 import { auth } from "./firebase.js";
-import {
-  signInWithEmailAndPassword,
+import { 
   createUserWithEmailAndPassword,
-  onAuthStateChanged
+  updateProfile
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-const emailInput = document.getElementById("username");
-const passwordInput = document.getElementById("password");
-const loginBtn = document.getElementById("login");
+const username = document.getElementById("user");
+const email = document.getElementById("userName");
+const password = document.getElementById("password");
 const registerBtn = document.getElementById("register");
 
-loginBtn.addEventListener("click", () => {
+registerBtn.addEventListener("click", async () => {
 
-  const email = emailInput.value;
-  const password = passwordInput.value;
-
-  if (!email || !password) {
-    alert("Please enter email and password");
+  if (username.value === "" || email.value === "" || password.value === "") {
+    alert("Please fill all fields");
     return;
   }
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      window.location.href = "./pages/dashborard.html";
-    })
-    .catch(() => {
-      alert("Invalid email or password");
+  try {
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email.value,
+      password.value
+    );
+
+    await updateProfile(userCredential.user, {
+      displayName: username.value
     });
-});
 
-registerBtn.addEventListener("click", () => {
+    alert("Registration Successful");
+    window.location.href = "../pages/dashboard.html";
 
-  const email = emailInput.value;
-  const password = passwordInput.value;
-
-  if (!email || !password) {
-    alert("Please enter email and password");
-    return;
+  } catch (error) {
+    alert(error.message);
   }
 
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      alert("Registration Successful!");
-      window.location.href = "./pages/dashborard.html";
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-});
-
-onAuthStateChanged(auth, (user) => {
-  if (user) {
-    window.location.href = "./pages/dashborard.html";
-  }
 });
