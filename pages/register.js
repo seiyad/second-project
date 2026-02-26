@@ -43,7 +43,8 @@ registerBtn.addEventListener("click", async () => {
     });
 
     alert("Registration Successful");
-    window.location.href = "dashboard.html";
+
+    window.location.replace("./dashborard.html");
 
   } catch (error) {
     alert(error.message);
