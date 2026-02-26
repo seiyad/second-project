@@ -100,7 +100,7 @@
 
         <div class="input-group">
             <label>Monthly Gross Salary (₹)</label>
-            <input type="number" id="grossSalary" placeholder="e.g. 50000">
+            <input type="number" id="monthlySalary" placeholder="e.g. 50000">
         </div>
 
         <button onclick="calculateSalary()">Submit</button>
@@ -112,7 +112,7 @@
             // Values-ah edukurom
             let gross = parseFloat(document.getElementById('grossSalary').value);
 
-            if (isNaN(gross) || gross <= 0) {
+            if (isNaN(gross) || gross <= 0) {                                     
                 alert("Please enter a valid salary amount!");
                 return;
             }

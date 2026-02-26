@@ -23,7 +23,7 @@ registerBtn.addEventListener("click", async () => {
     try {
         await createUserWithEmailAndPassword(auth, email, password);
         alert("Registration successful");
-        window.location.href = "./dashborard.html";
+        window.location.href = "./uservalue.html";
     } catch (error) {
         alert(error.message);
     }
