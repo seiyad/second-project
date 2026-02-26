@@ -1,7 +1,6 @@
 import { auth } from "./firebase.js";
 import {
   signInWithEmailAndPassword,
-  createUserWithEmailAndPassword,
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
@@ -30,23 +29,7 @@ loginBtn.addEventListener("click", () => {
 });
 
 registerBtn.addEventListener("click", () => {
-
-  const email = emailInput.value;
-  const password = passwordInput.value;
-
-  if (!email || !password) {
-    alert("Please enter email and password");
-    return;
-  }
-
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      alert("Registration Successful!");
-      window.location.href = "./pages/dashborard.html";
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
+  window.location.href = "./pages/register.html";
 });
 
 onAuthStateChanged(auth, (user) => {
