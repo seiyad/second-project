@@ -25,7 +25,7 @@ if (registerBtn) {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       alert("Registration successful");
-      window.location.href = "../dashborard.html";
+      window.location.href = "./pages/dashborard.html";
     } catch (error) {
       alert(error.message);
     }
