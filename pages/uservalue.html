@@ -105,18 +105,16 @@
 
         <button onclick="calculateSalary()">Submit</button>
     </div>
-    </div>
 
     <script>
         function calculateSalary() {
             // Values-ah edukurom
             let gross = parseFloat(document.getElementById('grossSalary').value);
 
-            if (isNaN(gross) || gross <= 0) {                                     
+            if (isNaN(gross) && gross <= 0) {                                     
                 alert("Please enter a valid salary amount!");
                 return;
-            }
-            else {
+            }else {
                 window.location.href = "./pages/dashborard.html";
             }
         }
