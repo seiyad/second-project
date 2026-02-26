@@ -106,19 +106,21 @@
         <button onclick="calculateSalary()">Submit</button>
     </div>
 
-    <script>
-        function calculateSalary() {
-            // Values-ah edukurom
-            let gross = parseFloat(document.getElementById('grossSalary').value);
+<script>
+    const submitBtn = document.getElementById("submitBtn");
 
-            if (isNaN(gross) && gross <= 0) {                                     
-                alert("Please enter a valid salary amount!");
-                return;
-            }else {
-                window.location.href = "./pages/dashborard.html";
-            }
+    submitBtn.addEventListener("click", function () {
+        const salaryInput = document.getElementById("monthlySalary").value;
+        const monthlySalary = parseFloat(salaryInput);
+
+        if (isNaN(monthlySalary) || monthlySalary <= 0) {
+            alert("Please enter a valid salary amount!");
+            return;
         }
-    </script>
+
+        window.location.href = "./pages/dashboard.html";
+    });
+</script>
 
 </body>
 
