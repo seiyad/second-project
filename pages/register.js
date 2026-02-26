@@ -1,34 +1,30 @@
 import { auth } from "./firebase.js";
 import { createUserWithEmailAndPassword } 
-from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+  from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
 const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const registerBtn = document.getElementById("register");
 
-if (registerBtn) {
-  registerBtn.addEventListener("click", async () => {
-
+registerBtn.addEventListener("click", async () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
 
     if (!email || !password) {
-      alert("Please enter email and password");
-      return;
+        alert("Please enter email and password");
+        return;
     }
 
     if (password.length < 6) {
-      alert("Password must be at least 6 characters long");
-      return;
+        alert("Password must be at least 6 characters long");
+        return;
     }
 
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      alert("Registration successful");
-      window.location.href = "./pages/dashborard.html";
+        await createUserWithEmailAndPassword(auth, email, password);
+        alert("Registration successful");
+        window.location.href = "./dashborard.html";
     } catch (error) {
-      alert(error.message);
+        alert(error.message);
     }
-
-  });
-}
+});
