@@ -12,10 +12,12 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
-logoutBtn.addEventListener("click", () => {
-    signOut(auth).then(() => {
-        window.location.href = "../index.html";
-    }).catch((error) => {
-        console.error("Error logging out:", error);
+logout.addEventListener("click", () => {
+  signOut(auth)
+    .then(() => {
+      window.location.href = "../index.html";
+    })
+    .catch((error) => {
+      console.error(error);
     });
 });
