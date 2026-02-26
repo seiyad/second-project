@@ -1,53 +1,33 @@
-import { auth, db } from "./firebase.js";
-
+import { auth } from "./firebase.js";
 import { 
-  createUserWithEmailAndPassword,
-  updateProfile
+  createUserWithEmailAndPassword 
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-import {
-  doc,
-  setDoc
-} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-firestore.js";
-
-const username = document.getElementById("user");
-const email = document.getElementById("userName");
-const password = document.getElementById("password");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
 const registerBtn = document.getElementById("register");
 
-registerBtn.addEventListener("click", async () => {
+registerBtn.addEventListener("click", () => {
 
-  if (!username.value || !email.value || !password.value) {
-    alert("Please fill all fields");
+  const email = emailInput.value;
+  const password = passwordInput.value;
+
+  if (!email || !password) {
+    alert("Please enter email and password");
     return;
   }
 
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email.value,
-      password.value
-    );
-
-    const user = userCredential.user;
-
-    await updateProfile(user, {
-      displayName: username.value
-    });
-
-    await setDoc(doc(db, "users", user.uid), {
-      username: username.value,
-      email: email.value,
-      uid: user.uid,
-      createdAt: new Date()
-    });
-
-    alert("Registration Successful");
-
-    window.location.replace("./dashboard.html");
-
-  } catch (error) {
-    alert(error.message);
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters");
+    return;
   }
 
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      alert("Registration Successful");
+      window.location.href = "../index.html";
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
 });
