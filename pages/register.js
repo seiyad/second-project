@@ -1,4 +1,4 @@
-import { auth, db } from "../firebase.js";
+import { auth, db } from "../class/pages/firebase.js";
 
 import { 
   createUserWithEmailAndPassword,
@@ -44,7 +44,7 @@ registerBtn.addEventListener("click", async () => {
 
     alert("Registration Successful");
 
-    window.location.replace("./dashborard.html");
+    window.location.replace("./pages/dashborard.html");
 
   } catch (error) {
     alert(error.message);
