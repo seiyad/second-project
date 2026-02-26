@@ -15,7 +15,6 @@
     <div class="nav-links">
       <a href="../pages/dashborard.html">Dashboard</a>
       <a href="../pages/expence.html">Expense</a>
-      <a href="../pages/catagorie.html">Category</a>
       <a href="../pages/profile.html">Profile</a>
       <button id="logout">Logout</button>
     </div>
@@ -51,9 +50,8 @@
     <div class="card" style="margin-top:30px;">
       <h3>Monthly Progress</h3>
 
-      <div style="width:100%;height:20px;background:#eee;border-radius:20px;overflow:hidden;margin-top:10px;">
-        <div id="monthlyProgressBar"
-             style="height:100%;width:0%;background:#ff3b3b;transition:0.4s;">
+      <div class="contain">
+        <div id="monthlyProgressBar" class="brogress">
         </div>
       </div>
 
@@ -68,7 +66,7 @@
     &copy; Expense Tracker
   </footer>
 
-  <script type="module" src="./script.js"></script>
+  <script type="module" src="./dashboard.js"></script>
 
 </body>
 </html>
