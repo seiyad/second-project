@@ -33,10 +33,11 @@
             alert("Please enter a valid salary amount!");
             return;
         }
+        localStorage.setItem("monthlySalary", monthlySalary);
+
 
         window.location.href = "./pages/dashboard.html";
     });
 </script>
-
 </body>
 </html>
