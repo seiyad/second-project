@@ -43,4 +43,4 @@ logoutBtn.addEventListener("click", () => {
     localStorage.removeItem("monthlySalary");
     window.location.href = "../index.html";
   });
-});
+}); 
