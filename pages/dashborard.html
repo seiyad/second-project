@@ -1,65 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Expense Tracker Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/dashboard.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xpense Dashboard</title>
+  <link rel="stylesheet" href="./dashboard.css">
 </head>
 
 <body>
 
-    <div class="dashboard-container">
+  <nav class="navbar">
+    <div class="logo">Xpense</div>
 
-        <header class="navbar">
-            <h2>Expense Tracker</h2>
-            <button id="logoutBtn">Logout</button>
-        </header>
+    <div class="nav-links">
+      <a href="../pages/dashborard.html">Dashboard</a>
+      <a href="../pages/expence.html">Expense</a>
+      <a href="../pages/profile.html">Profile</a>
+      <button id="logout">Logout</button>
+    </div>
 
-        <section class="form-section">
-            <h3>Add / Edit Expense</h3>
+  </nav>
 
-            <form id="frm">
-                <input type="hidden" id="id">
+  <section class="container">
+    <h1>Dashboard</h1>
 
-                <input type="text" id="ExpenseName" placeholder="Expense Name">
-                
-                <input type="text" id="ExpenseCatagorie" placeholder="Category">
-                
-                <input type="date" id="Date">
-                
-                <input type="number" id="Amount" placeholder="Amount">
+    <div class="cards">
 
-                <button type="submit">Save Expense</button>
-            </form>
-        </section>
+      <div class="card red">
+        <h3>Total Spent (This Month)</h3>
+        <div class="amount" id="totalSpent">₹0.00</div>
+      </div>
 
-        <section class="table-section">
-            <h3>Expense List</h3>
+      <div class="card green">
+        <h3>Remaining Budget</h3>
+        <div class="amount" id="remainingBudget">₹0.00</div>
+      </div>
 
-            <table border="1" width="100%">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Date</th>
-                        <th>Amount</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody id="tblBody">
-                    <tr>
-                        <td colspan="7">No Record Found</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+      <div class="card blue">
+        <h3>Highest Expense</h3>
+        <div class="amount" id="highestExpense">₹0.00</div>
+      </div>
 
     </div>
 
-    <script type="module" src="../js/dashboard.js"></script>
+   
+    <div class="card" style="margin-top:30px;">
+      <h3>Monthly Progress</h3>
 
-</body>
-</html>
+      <div class="contain">
+        <div id="monthlyProgressBar" class="brogress">
+        </div>
+      </div>
+
+      <p id="progressText" style="margin-top:10px;">
+        0% of monthly budget used
+      </p>
+      <p id="progressamount"></p>
+    </div>
+
+  </section>
+
+  <footer>
+    &copy; Expense Tracker
+  </footer>
+
+  <script type="module" src="./dashboard.js"></script>
+ </body>
+ </html>

@@ -1,25 +1,17 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
-import { 
-    getDatabase, 
-    ref, 
-    push, 
-    onValue, 
-    remove, 
-    set 
-} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
+import { getDatabase, ref, push, onValue, remove, set } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
 
-
-// 🔥 Firebase Config (Only DB needed for RTDB)
 const appSetting = {
     databaseURL: "https://expense-trakker-default-rtdb.firebaseio.com/"
 };
 
 const app = initializeApp(appSetting);
+const auth = getAuth(app);
 const database = getDatabase(app);
-const expenseListRef = ref(database, "expenses");
 
+let expenseListRef;
 
-// 🔥 Elements
 const idEl = document.querySelector("#id");
 const nameEl = document.querySelector("#ExpenseName");
 const catagorieEl = document.querySelector("#ExpenseCatagorie");
@@ -28,42 +20,48 @@ const amountEl = document.querySelector("#Amount");
 const frmEl = document.querySelector("#frm");
 const tblBodyEl = document.querySelector("#tblBody");
 
+onAuthStateChanged(auth, (user) => {
 
-// 🔥 Add / Update Expense
-frmEl.addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    if (
-        !nameEl.value.trim() ||
-        !catagorieEl.value.trim() ||
-        !dateEl.value.trim() ||
-        !amountEl.value.trim()
-    ) {
-        alert("Please fill all details");
+    if (!user) {
+        window.location.href = "../index.html";
         return;
     }
 
-    const expenseData = {
-        name: nameEl.value.trim(),
-        catagorie: catagorieEl.value.trim(),
-        date: dateEl.value.trim(),
-        amount: Number(amountEl.value.trim()),
-        time: new Date().toLocaleTimeString()
-    };
+    expenseListRef = ref(database, "users/" + user.uid + "/expenses");
 
-    if (idEl.value) {
-        // 🔄 Update
-        set(ref(database, "expenses/" + idEl.value), expenseData);
-    } else {
-        // ➕ Add
-        push(expenseListRef, expenseData);
-    }
+    loadExpenses();
 
-    clearElements();
+    frmEl.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        if (
+            !nameEl.value.trim() ||
+            !catagorieEl.value.trim() ||
+            !dateEl.value.trim() ||
+            !amountEl.value.trim()
+        ) {
+            alert("Please fill all details");
+            return;
+        }
+
+        const expenseData = {
+            name: nameEl.value.trim(),
+            catagorie: catagorieEl.value.trim(),
+            date: dateEl.value.trim(),
+            amount: Number(amountEl.value.trim())
+        };
+
+        if (idEl.value) {
+            set(ref(database, "users/" + user.uid + "/expenses/" + idEl.value), expenseData);
+        } else {
+            push(expenseListRef, expenseData);
+        }
+
+        clearElements();
+    });
+
 });
 
-
-// 🔥 Clear Form
 function clearElements() {
     nameEl.value = "";
     catagorieEl.value = "";
@@ -72,58 +70,56 @@ function clearElements() {
     idEl.value = "";
 }
 
+function loadExpenses() {
 
-// 🔥 Display Table (Live Update)
-onValue(expenseListRef, function(snapshot) {
+    onValue(expenseListRef, function (snapshot) {
 
-    tblBodyEl.innerHTML = "";
+        tblBodyEl.innerHTML = "";
 
-    if (snapshot.exists()) {
+        if (snapshot.exists()) {
 
-        let expenseArray = Object.entries(snapshot.val());
+            let expenseArray = Object.entries(snapshot.val());
 
-        expenseArray.forEach((item, index) => {
+            expenseArray.forEach((item, index) => {
 
-            const expenseID = item[0];
-            const expense = item[1];
+                const expenseID = item[0];
+                const expense = item[1];
 
-            tblBodyEl.innerHTML += `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${expense.name}</td>
-                    <td>${expense.catagorie}</td>
-                    <td>${expense.date}</td>
-                    <td>₹${expense.amount}</td>
-                    <td>
-                        <button type="button" class="btn-edit" data-id="${expenseID}">
-                            ✏️
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn-delete" data-id="${expenseID}">
-                            🗑️
-                        </button>
-                    </td>
-                </tr>
-            `;
-        });
+                tblBodyEl.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${expense.name}</td>
+                        <td>${expense.catagorie}</td>
+                        <td>${expense.date}</td>
+                        <td>₹${expense.amount}</td>
+                        <td>
+                            <button type="button" class="btn-edit" data-id="${expenseID}">
+                                <ion-icon name="create-outline"></ion-icon>
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn-delete" data-id="${expenseID}">
+                                <ion-icon name="trash-outline"></ion-icon>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
 
-    } else {
-        tblBodyEl.innerHTML =
-            "<tr><td colspan='7'>No Record Found</td></tr>";
-    }
-});
+        } else {
+            tblBodyEl.innerHTML = "<tr><td colspan='7'>No Record Found</td></tr>";
+        }
 
+    });
 
-// 🔥 Edit & Delete
-document.addEventListener("click", function(e) {
+}
+
+document.addEventListener("click", function (e) {
 
     const editBtn = e.target.closest(".btn-edit");
     const deleteBtn = e.target.closest(".btn-delete");
 
-    // ✏️ Edit
     if (editBtn) {
-
         const id = editBtn.dataset.id;
         const row = editBtn.closest("tr").children;
 
@@ -134,12 +130,11 @@ document.addEventListener("click", function(e) {
         amountEl.value = row[4].textContent.replace("₹", "");
     }
 
-    // 🗑️ Delete
     if (deleteBtn) {
-
         if (confirm("Are you sure to delete?")) {
             const id = deleteBtn.dataset.id;
-            remove(ref(database, `expenses/${id}`));
+            remove(ref(database, "users/" + auth.currentUser.uid + "/expenses/" + id));
         }
     }
+
 });
