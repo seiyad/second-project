@@ -2,11 +2,17 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebas
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-auth.js";
 import { getDatabase, ref, push, onValue, remove, set } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
 
-const appSetting = {
-    databaseURL: "https://expense-trakker-default-rtdb.firebaseio.com/"
+const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "expense-trakker.firebaseapp.com",
+    databaseURL: "https://expense-trakker-default-rtdb.firebaseio.com/",
+    projectId: "expense-trakker",
+    storageBucket: "expense-trakker.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
 
-const app = initializeApp(appSetting);
+const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
@@ -29,7 +35,7 @@ onAuthStateChanged(auth, (user) => {
 
     expenseListRef = ref(database, "users/" + user.uid + "/expenses");
 
-    loadExpenses();
+    loadExpenses(user.uid);
 
     frmEl.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -70,15 +76,15 @@ function clearElements() {
     idEl.value = "";
 }
 
-function loadExpenses() {
+function loadExpenses(uid) {
 
-    onValue(expenseListRef, function (snapshot) {
+    onValue(ref(database, "users/" + uid + "/expenses"), function (snapshot) {
 
         tblBodyEl.innerHTML = "";
 
         if (snapshot.exists()) {
 
-            let expenseArray = Object.entries(snapshot.val());
+            const expenseArray = Object.entries(snapshot.val());
 
             expenseArray.forEach((item, index) => {
 
@@ -111,7 +117,6 @@ function loadExpenses() {
         }
 
     });
-
 }
 
 document.addEventListener("click", function (e) {
