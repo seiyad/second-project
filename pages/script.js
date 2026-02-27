@@ -7,7 +7,6 @@ const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("login");
 const registerBtn = document.getElementById("register");
 
-// Login
 loginBtn.addEventListener("click", () => {
     const email = emailInput.value.trim();
     const password = passwordInput.value.trim();
@@ -26,12 +25,12 @@ loginBtn.addEventListener("click", () => {
         });
 });
 
-// Go to register page
+
 registerBtn.addEventListener("click", () => {
     window.location.href = "./pages/register.html";
 });
 
-// If already logged in
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
         window.location.href = "./pages/dashborard.html";

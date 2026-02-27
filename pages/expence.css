@@ -178,18 +178,18 @@ form input {
   cursor: pointer;
 }
 
-.btn-edit ion-icon {
-  color: #6366f1;
+.btn-edit {
+  color: #ffffff;
   font-size: 18px;
 }
 
-.btn-delete ion-icon {
-  color: #ef4444;
+.btn-delete{
+  color: #ffffff;
   font-size: 18px;
 }
 
 .btn-edit:hover {
-  background: #1c1c24;
+  background: #5c5cff;
 }
 
 .btn-delete:hover {
