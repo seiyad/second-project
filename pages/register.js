@@ -8,7 +8,7 @@ const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const registerBtn = document.getElementById("register");
 
-// If already logged in, skip registration
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
         window.location.href = "./dashborard.html";
@@ -33,7 +33,7 @@ registerBtn.addEventListener("click", async () => {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         const user = userCredential.user;
 
-        // ✅ Ask for monthly budget right after registration
+        
         const budget = prompt("Welcome! Enter your monthly budget (₹):");
         if (budget && !isNaN(budget) && Number(budget) > 0) {
             localStorage.setItem(`monthlySalary_${user.uid}`, Number(budget));

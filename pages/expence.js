@@ -12,7 +12,7 @@ import {
     onAuthStateChanged 
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-// ✅ Firebase config directly here - no import needed
+
 const firebaseConfig = {
   apiKey: "AIzaSyAWfXbLyYQKrWfnZPdpo25WOr7n9N4M78c",
   authDomain: "expense-trakker.firebaseapp.com",
@@ -38,7 +38,7 @@ const tblBodyEl = document.querySelector("#tblBody");
 let currentUserId = null;
 let expenseListRef = null;
 
-// ✅ Wait for login - if not logged in go back to login page
+
 onAuthStateChanged(auth, (user) => {
     if (!user) {
         window.location.href = "../index.html";
@@ -47,10 +47,10 @@ onAuthStateChanged(auth, (user) => {
 
     currentUserId = user.uid;
 
-    // ✅ THIS is the fix - expenses stored under user's UID
+   
     expenseListRef = ref(database, `expenses/${currentUserId}`);
 
-    // ✅ Load ONLY this user's expenses
+    
     onValue(expenseListRef, function(snapshot) {
         tblBodyEl.innerHTML = "";
 
@@ -84,7 +84,7 @@ onAuthStateChanged(auth, (user) => {
     });
 });
 
-// ✅ Add or Update expense
+
 frmEl.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -107,10 +107,10 @@ frmEl.addEventListener("submit", function(e) {
     };
 
     if (idEl.value) {
-        // ✅ Update - inside user's own folder
+       
         set(ref(database, `expenses/${currentUserId}/${idEl.value}`), expenseData);
     } else {
-        // ✅ Add new - inside user's own folder
+        
         push(expenseListRef, expenseData);
     }
 
@@ -125,7 +125,7 @@ function clearElements() {
     idEl.value = "";
 }
 
-// ✅ Edit and Delete
+
 document.addEventListener("click", function(e) {
     const editBtn = e.target.closest(".btn-edit");
     const deleteBtn = e.target.closest(".btn-delete");
@@ -144,7 +144,7 @@ document.addEventListener("click", function(e) {
     if (deleteBtn) {
         if (confirm("Are you sure to delete?")) {
             const id = deleteBtn.dataset.id;
-            // ✅ Delete from user's own folder only
+            
             remove(ref(database, `expenses/${currentUserId}/${id}`));
         }
     }

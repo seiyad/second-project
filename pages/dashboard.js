@@ -38,17 +38,17 @@ onAuthStateChanged(auth, (user) => {
     return;
   }
 
-  // ✅ Check if salary is set for this user
+ 
   const salaryKey = `monthlySalary_${user.uid}`;
   const monthlySalary = parseFloat(localStorage.getItem(salaryKey)) || 0;
 
   if (!monthlySalary) {
-    // ✅ Salary not set - go to uservalue page
+    
     window.location.href = "./uservalue.html";
     return;
   }
 
-  // ✅ Load this user's expenses only
+  
   const expenseRef = ref(database, `expenses/${user.uid}`);
 
   onValue(expenseRef, (snapshot) => {
@@ -81,12 +81,12 @@ onAuthStateChanged(auth, (user) => {
       ? Math.min((totalSpent / monthlySalary) * 100, 100).toFixed(1)
       : 0;
 
-    // ✅ Update dashboard cards
+    
     totalSpentEl.textContent = `₹${totalSpent.toFixed(2)}`;
     remainingBudgetEl.textContent = `₹${remaining.toFixed(2)}`;
     highestExpenseEl.textContent = `₹${highestExpense.toFixed(2)}`;
 
-    // ✅ Progress bar
+    
     progressBar.style.width = `${percent}%`;
     progressBar.style.backgroundColor = percent > 80 ? "#e74c3c" : "#2ecc71";
     progressText.textContent = `${percent}% of monthly budget used`;

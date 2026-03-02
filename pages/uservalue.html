@@ -40,15 +40,15 @@
 
     const submitBtn = document.getElementById("submitBtn");
 
-    // ✅ Get current user UID
+    
     onAuthStateChanged(auth, (user) => {
         if (!user) {
-            // Not logged in - go to login
+            
             window.location.href = "../index.html";
             return;
         }
 
-        // ✅ If salary already set, skip this page
+        
         const existingSalary = localStorage.getItem(`monthlySalary_${user.uid}`);
         if (existingSalary) {
             window.location.href = "./dashborard.html";
@@ -64,7 +64,7 @@
                 return;
             }
 
-            // ✅ Save with user's UID - each user has their own salary
+            
             localStorage.setItem(`monthlySalary_${user.uid}`, monthlySalary);
 
             window.location.href = "./dashborard.html";

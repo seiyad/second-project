@@ -7,7 +7,7 @@ const passwordInput = document.getElementById("password");
 const loginBtn = document.getElementById("login");
 const registerBtn = document.getElementById("register");
 
-// If already logged in, go to dashboard
+
 onAuthStateChanged(auth, (user) => {
     if (user) {
         window.location.href = "./pages/dashborard.html";

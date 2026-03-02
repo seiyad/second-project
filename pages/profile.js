@@ -5,7 +5,7 @@ import {
     signOut 
 } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-// ✅ Firebase config directly - no import issues
+
 const firebaseConfig = {
   apiKey: "AIzaSyAWfXbLyYQKrWfnZPdpo25WOr7n9N4M78c",
   authDomain: "expense-trakker.firebaseapp.com",
@@ -32,14 +32,14 @@ onAuthStateChanged(auth, (user) => {
     } else {
         const name = user.email.split("@")[0];
 
-        // ✅ Display user info
+        
         displayName.textContent = name;
         displayEmail.textContent = user.email;
         displayUserId.textContent = user.uid;
         displayCreatedDate.textContent =
             new Date(user.metadata.creationTime).toLocaleDateString();
 
-        // ✅ Show first letter as avatar
+        
         profileAvatar.textContent = name.charAt(0).toUpperCase();
     }
 });
