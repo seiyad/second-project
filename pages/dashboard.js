@@ -1,8 +1,22 @@
-import { auth, database } from "./firebase.js";
-import { onAuthStateChanged, signOut } 
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } 
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-import { ref, onValue } 
+import { getDatabase, ref, onValue } 
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAWfXbLyYQKrWfnZPdpo25WOr7n9N4M78c",
+  authDomain: "expense-trakker.firebaseapp.com",
+  databaseURL: "https://expense-trakker-default-rtdb.firebaseio.com",
+  projectId: "expense-trakker",
+  storageBucket: "expense-trakker.firebasestorage.app",
+  messagingSenderId: "654573857096",
+  appId: "1:654573857096:web:a07423978542be8a086b7d"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const database = getDatabase(app);
 
 const logoutBtn = document.getElementById("logout");
 const totalSpentEl = document.getElementById("totalSpent");
@@ -12,12 +26,8 @@ const progressBar = document.getElementById("monthlyProgressBar");
 const progressText = document.getElementById("progressText");
 const progressAmount = document.getElementById("progressamount");
 
-// Monthly budget - stored per user in localStorage
-let monthlySalary = 0;
-
 logoutBtn.addEventListener("click", () => {
   signOut(auth).then(() => {
-    localStorage.removeItem("monthlySalary");
     window.location.href = "../index.html";
   });
 });
@@ -28,17 +38,17 @@ onAuthStateChanged(auth, (user) => {
         return;
     }
 
-    // Load salary specific to this user
+    // ✅ Check if salary is set for this user
     const salaryKey = `monthlySalary_${user.uid}`;
-    monthlySalary = parseFloat(localStorage.getItem(salaryKey)) || 0;
+    const monthlySalary = parseFloat(localStorage.getItem(salaryKey)) || 0;
 
     if (!monthlySalary) {
-        const input = prompt("Enter your monthly budget (₹):");
-        monthlySalary = parseFloat(input) || 0;
-        localStorage.setItem(salaryKey, monthlySalary);
+        // ✅ Salary not set - go to uservalue page
+        window.location.href = "./uservalue.html";
+        return;
     }
 
-    // Listen to THIS user's expenses only
+    // ✅ Load this user's expenses only
     const expenseRef = ref(database, `expenses/${user.uid}`);
 
     onValue(expenseRef, (snapshot) => {
@@ -53,7 +63,6 @@ onAuthStateChanged(auth, (user) => {
             const expenses = Object.values(snapshot.val());
 
             expenses.forEach((expense) => {
-                // Filter only this month's expenses
                 const expDate = new Date(expense.date);
                 if (
                     expDate.getMonth() === currentMonth &&
@@ -68,17 +77,19 @@ onAuthStateChanged(auth, (user) => {
         }
 
         const remaining = monthlySalary - totalSpent;
-        const percent = monthlySalary > 0 
-            ? Math.min((totalSpent / monthlySalary) * 100, 100).toFixed(1) 
+        const percent = monthlySalary > 0
+            ? Math.min((totalSpent / monthlySalary) * 100, 100).toFixed(1)
             : 0;
 
-        // Update UI
-        totalSpentEl.textContent = `₹${totalSpent.toFixed(2)}`;
-        remainingBudgetEl.textContent = `₹${remaining.toFixed(2)}`;
-        highestExpenseEl.textContent = `₹${highestExpense.toFixed(2)}`;
-        progressBar.style.width = `${percent}%`;
+        // ✅ Update dashboard cards
+        totalSpentEl.textContent       = `₹${totalSpent.toFixed(2)}`;
+        remainingBudgetEl.textContent  = `₹${remaining.toFixed(2)}`;
+        highestExpenseEl.textContent   = `₹${highestExpense.toFixed(2)}`;
+
+        // ✅ Progress bar
+        progressBar.style.width           = `${percent}%`;
         progressBar.style.backgroundColor = percent > 80 ? "#e74c3c" : "#2ecc71";
-        progressText.textContent = `${percent}% of monthly budget used`;
-        progressAmount.textContent = `₹${totalSpent.toFixed(2)} spent of ₹${monthlySalary.toFixed(2)}`;
+        progressText.textContent          = `${percent}% of monthly budget used`;
+        progressAmount.textContent        = `₹${totalSpent.toFixed(2)} spent of ₹${monthlySalary.toFixed(2)}`;
     });
 });

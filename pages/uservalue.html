@@ -21,22 +21,54 @@
         <button id="submitBtn">Submit</button>
     </div>
 
-<script>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAWfXbLyYQKrWfnZPdpo25WOr7n9N4M78c",
+        authDomain: "expense-trakker.firebaseapp.com",
+        databaseURL: "https://expense-trakker-default-rtdb.firebaseio.com",
+        projectId: "expense-trakker",
+        storageBucket: "expense-trakker.firebasestorage.app",
+        messagingSenderId: "654573857096",
+        appId: "1:654573857096:web:a07423978542be8a086b7d"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
     const submitBtn = document.getElementById("submitBtn");
 
-    submitBtn.addEventListener("click", function () {
-
-        const salaryInput = document.getElementById("monthlySalary").value;
-        const monthlySalary = parseFloat(salaryInput);
-
-        if (isNaN(monthlySalary) || monthlySalary <= 0) {
-            alert("Please enter a valid salary amount!");
+    // ✅ Get current user UID
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            // Not logged in - go to login
+            window.location.href = "../index.html";
             return;
         }
-        localStorage.setItem("monthlySalary", monthlySalary);
 
+        // ✅ If salary already set, skip this page
+        const existingSalary = localStorage.getItem(`monthlySalary_${user.uid}`);
+        if (existingSalary) {
+            window.location.href = "./dashborard.html";
+            return;
+        }
 
-        window.location.href = "./dashborard.html";
+        submitBtn.addEventListener("click", function () {
+            const salaryInput = document.getElementById("monthlySalary").value;
+            const monthlySalary = parseFloat(salaryInput);
+
+            if (isNaN(monthlySalary) || monthlySalary <= 0) {
+                alert("Please enter a valid salary amount!");
+                return;
+            }
+
+            // ✅ Save with user's UID - each user has their own salary
+            localStorage.setItem(`monthlySalary_${user.uid}`, monthlySalary);
+
+            window.location.href = "./dashborard.html";
+        });
     });
 </script>
 </body>
