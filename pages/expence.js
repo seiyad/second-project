@@ -1,20 +1,13 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-app.js";
+import { auth, database } from "./firebase.js";
+import { onAuthStateChanged } 
+    from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 import { 
-    getDatabase, 
     ref, 
     push, 
     onValue, 
     remove, 
     set 
-} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-database.js";
-
-const appSetting = {
-    databaseURL: "https://expense-trakker-default-rtdb.firebaseio.com/"
-};
-
-const app = initializeApp(appSetting);
-const database = getDatabase(app);
-const expenseListRef = ref(database, "expenses");
+} from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
 
 const idEl = document.querySelector("#id");
 const nameEl = document.querySelector("#ExpenseName");
@@ -24,8 +17,67 @@ const amountEl = document.querySelector("#Amount");
 const frmEl = document.querySelector("#frm");
 const tblBodyEl = document.querySelector("#tblBody");
 
+let currentUserId = null;
+let expenseListRef = null;
+
+// ✅ Check login - redirect if not logged in
+onAuthStateChanged(auth, (user) => {
+    if (!user) {
+        window.location.href = "../index.html";
+        return;
+    }
+
+    currentUserId = user.uid;
+
+    // ✅ Each user gets their own path
+    expenseListRef = ref(database, `expenses/${currentUserId}`);
+
+    // ✅ Load only this user's expenses
+    onValue(expenseListRef, function(snapshot) {
+        tblBodyEl.innerHTML = "";
+
+        if (snapshot.exists()) {
+            let expenseArray = Object.entries(snapshot.val());
+
+            expenseArray.forEach((item, index) => {
+                const expenseID = item[0];
+                const expense = item[1];
+
+                tblBodyEl.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${expense.name}</td>
+                        <td>${expense.catagorie}</td>
+                        <td>${expense.date}</td>
+                        <td>₹${expense.amount}</td>
+                        <td>
+                            <button type="button" class="btn-edit" data-id="${expenseID}">
+                                edit
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn-delete" data-id="${expenseID}">
+                                delete
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+        } else {
+            tblBodyEl.innerHTML = "<tr><td colspan='7'>No Record Found</td></tr>";
+        }
+    });
+});
+
+// ✅ Add or Update expense
 frmEl.addEventListener("submit", function(e) {
     e.preventDefault();
+
+    if (!currentUserId) {
+        alert("You must be logged in");
+        return;
+    }
 
     if (
         !nameEl.value.trim() ||
@@ -46,7 +98,7 @@ frmEl.addEventListener("submit", function(e) {
     };
 
     if (idEl.value) {
-        set(ref(database, "expenses/" + idEl.value), expenseData);
+        set(ref(database, `expenses/${currentUserId}/${idEl.value}`), expenseData);
     } else {
         push(expenseListRef, expenseData);
     }
@@ -62,47 +114,8 @@ function clearElements() {
     idEl.value = "";
 }
 
-onValue(expenseListRef, function(snapshot) {
-
-    tblBodyEl.innerHTML = "";
-
-    if (snapshot.exists()) {
-
-        let expenseArray = Object.entries(snapshot.val());
-
-        expenseArray.forEach((item, index) => {
-
-            const expenseID = item[0];
-            const expense = item[1];
-
-            tblBodyEl.innerHTML += `
-                <tr>
-                    <td>${index + 1}</td>
-                    <td>${expense.name}</td>
-                    <td>${expense.catagorie}</td>
-                    <td>${expense.date}</td>
-                    <td>₹${expense.amount}</td>
-                    <td>
-                        <button type="button" class="btn-edit" data-id="${expenseID}">
-                            edit
-                        </button>
-                    </td>
-                    <td>
-                        <button type="button" class="btn-delete" data-id="${expenseID}">
-                            delete
-                        </button>
-                    </td>
-                </tr>
-            `;
-        });
-
-    } else {
-        tblBodyEl.innerHTML = "<tr><td colspan='7'>No Record Found</td></tr>";
-    }
-});
-
+// ✅ Edit and Delete buttons
 document.addEventListener("click", function(e) {
-
     const editBtn = e.target.closest(".btn-edit");
     const deleteBtn = e.target.closest(".btn-delete");
 
@@ -120,7 +133,7 @@ document.addEventListener("click", function(e) {
     if (deleteBtn) {
         if (confirm("Are you sure to delete?")) {
             const id = deleteBtn.dataset.id;
-            remove(ref(database, `expenses/${id}`));
+            remove(ref(database, `expenses/${currentUserId}/${id}`));
         }
     }
 });
