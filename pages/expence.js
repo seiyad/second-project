@@ -27,6 +27,7 @@ const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 const auth = getAuth(app);
 
+const logoutBtn = document.getElementById("logout");
 const idEl = document.querySelector("#id");
 const nameEl = document.querySelector("#ExpenseName");
 const catagorieEl = document.querySelector("#ExpenseCatagorie");
@@ -37,6 +38,13 @@ const tblBodyEl = document.querySelector("#tblBody");
 
 let currentUserId = null;
 let expenseListRef = null;
+
+logoutBtn.addEventListener("click", () => {
+  signOut(auth).then(() => {
+    window.location.href = "../index.html";
+  });
+});
+
 
 
 onAuthStateChanged(auth, (user) => {
