@@ -1,7 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebase-app.js";
-import { getAuth, onAuthStateChanged, signOut } 
+import { getAuth, onAuthStateChanged, signOut }
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
-import { getDatabase, ref, onValue } 
+import { getDatabase, ref, onValue }
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-database.js";
 
 const firebaseConfig = {
@@ -33,63 +33,63 @@ logoutBtn.addEventListener("click", () => {
 });
 
 onAuthStateChanged(auth, (user) => {
-    if (!user) {
-        window.location.href = "../index.html";
-        return;
-    }
+  if (!user) {
+    window.location.href = "../index.html";
+    return;
+  }
 
-    // ✅ Check if salary is set for this user
-    const salaryKey = `monthlySalary_${user.uid}`;
-    const monthlySalary = parseFloat(localStorage.getItem(salaryKey)) || 0;
+  // ✅ Check if salary is set for this user
+  const salaryKey = `monthlySalary_${user.uid}`;
+  const monthlySalary = parseFloat(localStorage.getItem(salaryKey)) || 0;
 
-    if (!monthlySalary) {
-        // ✅ Salary not set - go to uservalue page
-        window.location.href = "./uservalue.html";
-        return;
-    }
+  if (!monthlySalary) {
+    // ✅ Salary not set - go to uservalue page
+    window.location.href = "./uservalue.html";
+    return;
+  }
 
-    // ✅ Load this user's expenses only
-    const expenseRef = ref(database, `expenses/${user.uid}`);
+  // ✅ Load this user's expenses only
+  const expenseRef = ref(database, `expenses/${user.uid}`);
 
-    onValue(expenseRef, (snapshot) => {
-        let totalSpent = 0;
-        let highestExpense = 0;
+  onValue(expenseRef, (snapshot) => {
+    let totalSpent = 0;
+    let highestExpense = 0;
 
-        const now = new Date();
-        const currentMonth = now.getMonth();
-        const currentYear = now.getFullYear();
+    const now = new Date();
+    const currentMonth = now.getMonth();
+    const currentYear = now.getFullYear();
 
-        if (snapshot.exists()) {
-            const expenses = Object.values(snapshot.val());
+    if (snapshot.exists()) {
+      const expenses = Object.values(snapshot.val());
 
-            expenses.forEach((expense) => {
-                const expDate = new Date(expense.date);
-                if (
-                    expDate.getMonth() === currentMonth &&
-                    expDate.getFullYear() === currentYear
-                ) {
-                    totalSpent += expense.amount;
-                    if (expense.amount > highestExpense) {
-                        highestExpense = expense.amount;
-                    }
-                }
-            });
+      expenses.forEach((expense) => {
+        const expDate = new Date(expense.date);
+        if (
+          expDate.getMonth() === currentMonth &&
+          expDate.getFullYear() === currentYear
+        ) {
+          totalSpent += expense.amount;
+          if (expense.amount > highestExpense) {
+            highestExpense = expense.amount;
+          }
         }
+      });
+    }
 
-        const remaining = monthlySalary - totalSpent;
-        const percent = monthlySalary > 0
-            ? Math.min((totalSpent / monthlySalary) * 100, 100).toFixed(1)
-            : 0;
+    const remaining = monthlySalary - totalSpent;
+    const percent = monthlySalary > 0
+      ? Math.min((totalSpent / monthlySalary) * 100, 100).toFixed(1)
+      : 0;
 
-        // ✅ Update dashboard cards
-        totalSpentEl.textContent       = `₹${totalSpent.toFixed(2)}`;
-        remainingBudgetEl.textContent  = `₹${remaining.toFixed(2)}`;
-        highestExpenseEl.textContent   = `₹${highestExpense.toFixed(2)}`;
+    // ✅ Update dashboard cards
+    totalSpentEl.textContent = `₹${totalSpent.toFixed(2)}`;
+    remainingBudgetEl.textContent = `₹${remaining.toFixed(2)}`;
+    highestExpenseEl.textContent = `₹${highestExpense.toFixed(2)}`;
 
-        // ✅ Progress bar
-        progressBar.style.width           = `${percent}%`;
-        progressBar.style.backgroundColor = percent > 80 ? "#e74c3c" : "#2ecc71";
-        progressText.textContent          = `${percent}% of monthly budget used`;
-        progressAmount.textContent        = `₹${totalSpent.toFixed(2)} spent of ₹${monthlySalary.toFixed(2)}`;
-    });
+    // ✅ Progress bar
+    progressBar.style.width = `${percent}%`;
+    progressBar.style.backgroundColor = percent > 80 ? "#e74c3c" : "#2ecc71";
+    progressText.textContent = `${percent}% of monthly budget used`;
+    progressAmount.textContent = `₹${totalSpent.toFixed(2)} spent of ₹${monthlySalary.toFixed(2)}`;
+  });
 });
