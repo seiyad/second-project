@@ -86,7 +86,7 @@ onAuthStateChanged(auth, (user) => {
     remainingBudgetEl.textContent = `₹${remaining.toFixed(2)}`;
     highestExpenseEl.textContent = `₹${highestExpense.toFixed(2)}`;
 
-    
+          
     progressBar.style.width = `${percent}%`;
     progressBar.style.backgroundColor = percent > 80 ? "#e74c3c" : "#2ecc71";
     progressText.textContent = `${percent}% of monthly budget used`;
