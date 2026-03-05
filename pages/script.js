@@ -21,7 +21,7 @@ const registerBtn = document.getElementById('register');
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location.href = "./pages/dashboard.html";
+    window.location.href = "./pages/dashborard.html";
   }
 });
 
@@ -36,7 +36,7 @@ loginBtn.addEventListener('click', () => {
 
   signInWithEmailAndPassword(auth, email, password)
     .then(() => {
-      window.location.href = "./pages/dashboard.html";
+      window.location.href = "./pages/dashborard.html";
     })
     .catch((error) => {
       console.error(error);
