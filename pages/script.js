@@ -47,6 +47,6 @@ loginBtn.addEventListener('click',() => {
             );
 
     registerBtn.addEventListener('click',()=>{
-        window.location.href="./page/dashborard.html"
+        window.location.href="./page/register.html"
     })
 })
