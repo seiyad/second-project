@@ -29,11 +29,8 @@ loginBtn.addEventListener('click',() => {
     const email =emailInput.value.trim();
     const password = passwordInput.value.trim();
 
-    if(!email){
-        alert("please fill the valid email")
-        return
-    }else if(!password){
-        alert("plaese fill the valid password")
+    if(!email || !password){
+        alert("please fill the valid email and password");
         return
     };
 
