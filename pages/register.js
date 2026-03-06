@@ -20,7 +20,7 @@ const registerBtn = document.getElementById('registerBtn');
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location.href = "./dashborard.html";
+    window.location.href = "./pages/dashborard.html";
   }
 });
 
