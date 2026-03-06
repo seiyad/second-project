@@ -2,7 +2,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/12.7.0/firebas
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } 
   from "https://www.gstatic.com/firebasejs/12.7.0/firebase-auth.js";
 
-  const firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyAWfXbLyYQKrWfnZPdpo25WOr7n9N4M78c",
   authDomain: "expense-trakker.firebaseapp.com",
   projectId: "expense-trakker",
@@ -14,50 +14,51 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged }
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const emailInput = emailInput.value.trim();
-const passwordInput=passwordInput.value.trim();
-const registerBtn=registerBtn.value.trim();
+const emailInput = document.getElementById('emailInput');
+const passwordInput = document.getElementById('passwordInput');
+const registerBtn = document.getElementById('registerBtn');
 
-onAuthStateChanged(auth,(user)=>{
-    window.location.href="./dashborard.html"
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    window.location.href = "./dashboard.html";
+  }
 });
 
- registerBtn.addEventListener('click',async ()=>{
-    const email = emailInput.value.trim();
-    const password=passwordInput.value.trim();
-    
-    if (!email || !password){
-        alert("Invalid password and Invalid email")
-        return;
+registerBtn.addEventListener('click', async () => {
+  const email = emailInput.value.trim();
+  const password = passwordInput.value.trim();
+
+  if (!email || !password) {
+    alert("Please enter both email and password.");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    const salary = prompt("Enter Your Monthly Salary (₹):");
+    const monthlySalary = parseFloat(salary);
+
+    if (!isNaN(monthlySalary) && monthlySalary > 0) {
+      localStorage.setItem(`MonthlySalary_${user.uid}`, monthlySalary);
     }
-    if(length.password<6){
-        alert("Password must above 6 cheracters")
-        return;
+
+    alert("Registration successful! Welcome to Expense Tracker.");
+    window.location.href = "./pages/dashboard.html";
+
+  } catch (error) {
+    if (error.code === "auth/email-already-in-use") {
+      alert("This email is already registered.");
+    } else if (error.code === "auth/invalid-email") {
+      alert("Invalid email address.");
+    } else {
+      alert(error.message);
     }
-    try {
-        const userCreaditcial =  await createUserWithEmailAndPassword(auth,email,password);
-
-        const user = userCreaditcial.user;
-
-        const salary = prompt("Enter Your Monthly Salary:(₹)");
-        const MonthlySalary = parseFloat(salary);
-
-        if(!isNaN(MonthlySalary) ||  MonthlySalary>0){
-            
-            localStorage.setItem(`MonthlySalary_${user.uid}MonthlySalary`);
-
-            alert("Registration is succsus !Welcome to Expanse Trakker")
-
-            window.location.href="./pages/dashborard"
-        };
-    }catch{
-        if(error.code === "auth/email-aleady-use"){
-            alert("already Register This account")
-        }else if(error.code === "auth/invalid-email"){
-            alert("Invalid Email")
-        }else{
-            alert(error.message)
-        }
-
-    };
- });
+  }
+});
