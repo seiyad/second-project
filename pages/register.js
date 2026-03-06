@@ -16,7 +16,7 @@ const auth = getAuth(app);
 
 const emailInput = document.getElementById('email');
 const passwordInput = document.getElementById('password');
-const registerBtn = document.getElementById('registerBtn');
+const registerBtn = document.getElementById('register');
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
