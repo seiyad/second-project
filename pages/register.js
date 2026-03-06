@@ -26,13 +26,11 @@ onAuthStateChanged(auth,(user)=>{
     const email = emailInput.value.trim();
     const password=passwordInput.value.trim();
     
-    if (!email){
-        alert("Invalid email")
+    if (!email || !password){
+        alert("Invalid password and Invalid email")
         return;
-    }else if(!password){
-        alert("Invalid password")
-        return;
-    }else if(length.password<6){
+    }
+    if(length.password<6){
         alert("Password must above 6 cheracters")
         return;
     }
