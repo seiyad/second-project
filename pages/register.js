@@ -14,8 +14,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-const emailInput = document.getElementById('emailInput');
-const passwordInput = document.getElementById('passwordInput');
+const emailInput = document.getElementById('email');
+const passwordInput = document.getElementById('password');
 const registerBtn = document.getElementById('registerBtn');
 
 onAuthStateChanged(auth, (user) => {
