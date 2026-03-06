@@ -20,7 +20,7 @@ const registerBtn = document.getElementById('register');
 
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    window.location.href = "./pages/dashborard.html";
+    window.location.href = "./dashborard.html";
   }
 });
 
@@ -50,7 +50,7 @@ registerBtn.addEventListener('click', async () => {
     }
 
     alert("Registration successful! Welcome to Expense Tracker.");
-    window.location.href = "./pages/dashborard.html";
+    window.location.href = "./dashborard.html";
 
   } catch (error) {
     if (error.code === "auth/email-already-in-use") {
